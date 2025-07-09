@@ -331,17 +331,19 @@ Sent from Arliya Portfolio Website`)
         }, 2000)
 
         // Show success message
-        if (formStatus) {
-          formStatus.className = "form-status success"
-          formStatus.innerHTML = `
-                    <strong>✅ ส่งข้อความสำเร็จ!</strong><br>
-                    📧 อีเมลถูกส่งไปยัง angyeeephounsavath@gmail.com แล้ว<br>
-                    📱 WhatsApp และ Telegram ถูกเปิดในแท็บใหม่<br>
-                    เราจะติดต่อกลับภายใน 24 ชั่วโมง
-                `
-          formStatus.style.display = "block"
-        }
+if (formStatus) {
+    formStatus.className = 'form-status success';
+    formStatus.innerHTML = `
+        <strong>✅ Message sent successfully!</strong><br>
+        📧 Your email has been delivered<br>
+        We will get back to you within 24 hours<br><br>
 
+        <strong>✅ ส่งข้อความสำเร็จ!</strong><br>
+        📧 อีเมลถูกส่งไปยังผู้รับแล้วแล้ว<br>
+        เราจะติดต่อกลับภายใน 24 ชั่วโมง
+    `;
+    formStatus.style.display = 'block';
+}
         // Reset form
         this.reset()
 
