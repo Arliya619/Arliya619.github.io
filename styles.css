@@ -10,24 +10,24 @@ select option {
 }
 
 :root {
---primary-color: #ff6b6b;
---secondary-color: #ff8e8e;
---bg-primary: #1a1a2e;
---bg-secondary: #16213e;
---bg-tertiary: #0f3460;
---text-primary: #ffffff;
---text-secondary: #cccccc;
---text-muted: #888888;
---card-bg: rgba(255, 255, 255, 0.1);
---border-color: rgba(255, 107, 107, 0.3);
+  --primary-color: #d226dc;
+  --secondary-color: #ef4444;
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(220, 38, 38, 0.3);
 }
 
 body {
-font-family: 'Inter', 'Kanit', sans-serif;
-background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
-color: var(--text-primary);
-line-height: 1.6;
-overflow-x: hidden;
+  font-family: "Inter", "Kanit", sans-serif;
+  background: linear-gradient(135deg, #08030b 0%, #12001d 50%, #0c0c0c 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .thai-text {
