@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
 <!-- Security Meta Tags -->
-<meta name="google-site-verification" content="5yxfTu-hJexZCR0lHFMsWLHoUG7gf1h88iMPXDUfgcY" />
+<meta name="google-site-verification" content="lQsdFmhv4VQC3Fy1-UxIpgtMtcVdDWST0moAGByS0tM" />
 
 <!-- Security Meta Tags -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
@@ -151,7 +151,7 @@
 <!-- Header -->
 <header>
     <nav class="container">
-        <div class="logo thai-text">Arliya</div>
+        <a href="index.html" class="logo thai-text">Arliya</a>
         <div class="header-controls">
             <div class="language-switcher">
                 <button id="langBtn" class="control-btn" aria-label="Switch Language">
@@ -160,9 +160,11 @@
             </div>
         </div>
         <ul class="nav-links" id="navLinks" role="navigation">
-            <li><a href="#home" class="thai-text" data-en="Home" data-th="หน้าแรก">หน้าแรก</a></li>
+            <li><a href="#home" class="thai-text active" data-en="Home" data-th="หน้าแรก">หน้าแรก</a></li>
             <li><a href="#about" class="thai-text" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a></li>
-            <li><a href="#portfolio" class="thai-text" data-en="Portfolio" data-th="ผลงาน">ผลงาน</a></li>
+            <li><a href="long-videos.html" class="thai-text" data-en="Long Videos" data-th="วิดีโอยาว">วิดีโอยาว</a></li>
+            <li><a href="short-videos.html" class="thai-text" data-en="Short Videos" data-th="วิดีโอสั้น">วิดีโอสั้น</a></li>
+            <li><a href="photo-gallery.html" class="thai-text" data-en="Photos" data-th="รูปภาพ">รูปภาพ</a></li>
             <li><a href="#contact" class="thai-text" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a></li>
         </ul>
         <div class="mobile-menu" id="mobileMenu" aria-label="Mobile Menu">
@@ -242,7 +244,7 @@
       <!-- Video 1 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');"
              data-video-id="dQw4w9WgXcQ"
              onclick="openVideoModal(this)">
         </div>
@@ -263,7 +265,7 @@
       <!-- Video 2 -->
 <div class="video-card fade-in">
   <div class="video-thumbnail"
-       style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/mqdefault.jpg');"
+       style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
        data-video-id="LnYnVtMKY8Q"
        onclick="openVideoModal(this)">
   </div>
@@ -284,7 +286,7 @@
       <!-- Video 3 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/KwTT53qWf8o/mqdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/KwTT53qWf8o/maxresdefault.jpg');"
              data-video-id="KwTT53qWf8o"
              onclick="openVideoModal(this)">
         </div>
@@ -305,7 +307,7 @@
       <!-- Video 4 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/1HufxehhG50/mqdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/1HufxehhG50/maxresdefault.jpg');"
              data-video-id="1HufxehhG50"
              onclick="openVideoModal(this)">
         </div>
@@ -326,7 +328,7 @@
 <!-- Video 5 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/swQDiWpz-4s/0.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/maxresdefault.jpg');"
              data-video-id="swQDiWpz-4s"
              onclick="openVideoModal(this)">
         </div>
@@ -347,7 +349,7 @@
 <!-- Video 6 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/Sq4l1AdgiU0/mqdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/Sq4l1AdgiU0/maxresdefault.jpg');"
              data-video-id="Sq4l1AdgiU0"
              onclick="openVideoModal(this)">
         </div>
@@ -374,84 +376,58 @@
   </div>
 </section>
 
-<!-- Short Video Slides Section -->
-<section class="short-video-slides">
-    <div class="container">
-        <h2 class="section-title thai-text fade-in" data-en="Short Video Previews" data-th="ตัวอย่างวิดีโอสั้น">ตัวอย่างวิดีโอสั้น</h2>
-        <p class="section-subtitle thai-text fade-in" data-en="Quick previews of our video editing work in action" data-th="ตัวอย่างสั้นๆ ของผลงานการตัดต่อวิดีโอของเรา">ตัวอย่างสั้นๆ ของผลงานการตัดต่อวิดีโอของเรา</p>
-        
-        <div class="video-slider-container">
-            <div class="video-slider" id="videoSlider">
-                <div class="video-slide active">
-                    <video class="slide-video" autoplay muted loop playsinline>
-                        <source src="/placeholder.mp4?width=800&height=450&text=Commercial+Edit" type="video/mp4">
-                    </video>
-                    <div class="slide-overlay">
-                        <h3 class="thai-text" data-en="Commercial Video Edit" data-th="ตัดต่อวิดีโอโฆษณา">ตัดต่อวิดีโอโฆษณา</h3>
-                        <p class="thai-text" data-en="Professional commercial editing with motion graphics" data-th="การตัดต่อโฆษณามืออาชีพพร้อม motion graphics">การตัดต่อโฆษณามืออาชีพพร้อม motion graphics</p>
-                    </div>
-                </div>
-                
-                <div class="video-slide">
-                    <video class="slide-video" autoplay muted loop playsinline>
-                        <source src="/placeholder.mp4?width=800&height=450&text=Color+Grading" type="video/mp4">
-                    </video>
-                    <div class="slide-overlay">
-                        <h3 class="thai-text" data-en="Color Grading Showcase" data-th="โชว์เคส Color Grading">โชว์เคส Color Grading</h3>
-                        <p class="thai-text" data-en="Before and after color grading transformation" data-th="การเปลี่ยนแปลงก่อนและหลัง color grading">การเปลี่ยนแปลงก่อนและหลัง color grading</p>
-                    </div>
-                </div>
-                
-                <div class="video-slide">
-                    <video class="slide-video" autoplay muted loop playsinline>
-                        <source src="/placeholder.mp4?width=800&height=450&text=Motion+Graphics" type="video/mp4">
-                    </video>
-                    <div class="slide-overlay">
-                        <h3 class="thai-text" data-en="Motion Graphics Demo" data-th="สาธิต Motion Graphics">สาธิต Motion Graphics</h3>
-                        <p class="thai-text" data-en="Dynamic motion graphics and animation work" data-th="ผลงาน motion graphics และ animation แบบไดนามิก">ผลงาน motion graphics และ animation แบบไดนามิก</p>
-                    </div>
-                </div>
-                
-                <div class="video-slide">
-                    <video class="slide-video" autoplay muted loop playsinline>
-                        <source src="/placeholder.mp4?width=800&height=450&text=Social+Media" type="video/mp4">
-                    </video>
-                    <div class="slide-overlay">
-                        <h3 class="thai-text" data-en="Social Media Content" data-th="คอนเทนต์โซเชียลมีเดีย">คอนเทนต์โซเชียลมีเดีย</h3>
-                        <p class="thai-text" data-en="Engaging social media video content" data-th="คอนเทนต์วิดีโอโซเชียลมีเดียที่น่าสนใจ">คอนเทนต์วิดีโอโซเชียลมีเดียที่น่าสนใจ</p>
-                    </div>
-                </div>
-                
-                <div class="video-slide">
-                    <video class="slide-video" autoplay muted loop playsinline>
-                        <source src="/placeholder.mp4?width=800&height=450&text=Music+Video" type="video/mp4">
-                    </video>
-                    <div class="slide-overlay">
-                        <h3 class="thai-text" data-en="Music Video Edit" data-th="ตัดต่อมิวสิควิดีโอ">ตัดต่อมิวสิควิดีโอ</h3>
-                        <p class="thai-text" data-en="Creative music video editing with effects" data-th="การตัดต่อมิวสิควิดีโอสร้างสรรค์พร้อมเอฟเฟค">การตัดต่อมิวสิควิดีโอสร้างสรรค์พร้อมเอฟเฟค</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Navigation Dots -->
-            <div class="slider-dots">
-                <span class="dot active" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span>
-            </div>
-            
-            <!-- Navigation Arrows -->
-            <button class="slider-arrow prev" onclick="changeSlide(-1)" aria-label="Previous slide">‹</button>
-            <button class="slider-arrow next" onclick="changeSlide(1)" aria-label="Next slide">›</button>
-        </div>
+<!-- short-video Section -->
+<section class="short-video">
+  <div class="container">
+    <h2 class="section-title thai-text fade-in">ตัวอย่างวิดีโอสั้น</h2>
+    <p class="section-subtitle thai-text fade-in">ตัวอย่างสั้นๆ ของผลงานการตัดต่อวิดีโอของเรา</p>
 
-        <!-- View More Button for Short Videos -->
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="short-videos.html" class="btn btn-primary thai-text fade-in" data-en="View More Short Videos" data-th="ดูวิดีโอสั้นเพิ่มเติม">ดูวิดีโอสั้นเพิ่มเติม</a>
+    <div class="video-grid fade-in">
+      <!-- วิดีโอที่ 1 -->
+      <div class="video-card">
+        <div class="video-thumbnail"
+             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');"
+             data-video-id="dQw4w9WgXcQ"
+             onclick="openVideoModal(this)">
         </div>
+        <div class="video-info">
+          <h4 class="thai-text">ตัดต่อวิดีโอโฆษณา</h4>
+          <p class="thai-text">การตัดต่อโฆษณามืออาชีพพร้อม motion graphics</p>
+        </div>
+      </div>
+
+      <!-- วิดีโอที่ 2 -->
+      <div class="video-card">
+        <div class="video-thumbnail"
+             style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
+             data-video-id="LnYnVtMKY8Q"
+             onclick="openVideoModal(this)">
+        </div>
+        <div class="video-info">
+          <h4 class="thai-text">โชว์เคส Color Grading</h4>
+          <p class="thai-text">การเปลี่ยนแปลงก่อนและหลัง color grading</p>
+        </div>
+      </div>
+
+      <!-- วิดีโอที่ 3 -->
+      <div class="video-card">
+        <div class="video-thumbnail"
+             style="background-image: url('https://img.youtube.com/vi/KwTT53qWf8o/hqdefault.jpg');"
+             data-video-id="KwTT53qWf8o"
+             onclick="openVideoModal(this)">
+        </div>
+        <div class="video-info">
+          <h4 class="thai-text">ตัดต่อมิวสิควิดีโอ</h4>
+          <p class="thai-text">การตัดต่อมิวสิควิดีโอสร้างสรรค์พร้อมเอฟเฟค</p>
+        </div>
+      </div>
     </div>
+
+    <!-- ปุ่มเพิ่มเติม -->
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="short-videos.html" class="btn btn-primary thai-text">ดูวิดีโอสั้นเพิ่มเติม</a>
+    </div>
+  </div>
 </section>
 
 <!-- YouTube Thumbnails Section -->
@@ -803,6 +779,13 @@
             <img src="https://imgstore.org/a/6cuwa76kvvzz" alt="Email Icon" style="width:35px; height:auto;">
         </a>
     </div>
+</div>
+
+<!-- Animated Wave Background -->
+<div>
+   <div class="wave"></div>
+   <div class="wave"></div>
+   <div class="wave"></div>
 </div>
 
 <!-- AOS Animation Library -->
