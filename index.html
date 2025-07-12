@@ -8,7 +8,7 @@
 <meta name="google-site-verification" content="lQsdFmhv4VQC3Fy1-UxIpgtMtcVdDWST0moAGByS0tM" />
 
 <!-- Security Meta Tags -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -50,6 +50,7 @@
 
 <!-- Favicon and App Icons -->
 <link rel="icon" type="image/x-icon" href="https://imgstore.org/a/6cwmwb5hpf5j">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="https://imgstore.org/a/6cwmwb5hpf5j">
 
 <!-- Preconnect for Performance -->
@@ -75,18 +76,18 @@
     "url": "https://arliya619.github.io/",
     "image": "https://arliya619.github.io//images/jensen-profile.jpg",
     "telephone": "+20-58-66-5104",
-    "email": "https://arliya619.github.io/",
+    "email": "mailto:angyeeephounsavath@gmail.com",
     "address": {
         "@type": "PostalAddress",
         "addressCountry": "TH",
         "addressLocality": "Bangkok"
     },
     "sameAs": [
-        "https://www.facebook.com/Arliya Phounsavath",
-        "https://www.instagram.com/Arliya Phounsavath",
-        "https://www.youtube.com/@Arliya Phounsavath",
-        "https://www.tiktok.com/@Arliya Phounsavath",
-        "https://t.me/Arliya Phounsavath"
+        "https://www.facebook.com/ArliyaPhounsavath",
+        "https://www.instagram.com/ArliyaPhounsavath",
+        "https://www.youtube.com/@ArliyaPhounsavath",
+        "https://www.tiktok.com/@ArliyaPhounsavath",
+        "https://t.me/ArliyaPhounsavath"
     ],
     "knowsAbout": [
         "Video Editing",
@@ -98,30 +99,6 @@
         "Final Cut Pro"
     ]
 }
-</script>
-
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX', {
-        page_title: 'Arliya Phounsavath - Video Editor Portfolio',
-        page_location: window.location.href,
-        send_page_view: true
-    });
-    
-    // Enhanced tracking for user interactions
-    function trackEvent(action, category, label, value) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', action, {
-                event_category: category,
-                event_label: label,
-                value: value
-            });
-        }
-    }
 </script>
 
 <title>Arliya Phounsavath - นักตัดต่อวิดีโอมืออาชีพ | Motion Graphics & Color Grading | ประสบการณ์ 8+ ปี</title>
@@ -144,7 +121,7 @@
 <div class="video-modal" id="videoModal">
     <div class="video-modal-content">
         <button class="video-modal-close" id="closeVideoModal">&times;</button>
-        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+        <iframe id="videoFrame" src="" allowfullscreen loading="lazy"></iframe>
     </div>
 </div>
 
@@ -185,8 +162,8 @@
                 <h2 class="thai-text" data-en="Video Editor" data-th="นักตัดต่อวิดีโอ">นักตัดต่อวิดีโอ</h2>
                 <p class="subtitle thai-text" data-en="Professional video editor with Motion Graphics and Color Grading skills. 8+ years of experience creating impressive works." data-th="มืออาชีพด้านการตัดต่อวิดีโอ Motion Graphics และ Color Grading<br>ประสบการณ์กว่า 8 ปี พร้อมสร้างสรรค์ผลงานที่น่าประทับใจ">มืออาชีพด้านการตัดต่อวิดีโอ Motion Graphics และ Color Grading<br>ประสบการณ์กว่า 8 ปี พร้อมสร้างสรรค์ผลงานที่น่าประทับใจ</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary thai-text" data-en="Hire Me" data-th="รับงานโปรเจค" onclick="trackEvent('click', 'CTA', 'Hire Me Button', 1)">รับงานโปรเจค</a>
-                    <a href="#portfolio" class="btn btn-secondary thai-text" data-en="My Portfolio" data-th="ดูผลงาน" onclick="trackEvent('click', 'Navigation', 'Portfolio Button', 1)">ดูผลงาน</a>
+                    <a href="#contact" class="btn btn-primary thai-text" data-en="Hire Me" data-th="รับงานโปรเจค">รับงานโปรเจค</a>
+                    <a href="#portfolio" class="btn btn-secondary thai-text" data-en="My Portfolio" data-th="ดูผลงาน">ดูผลงาน</a>
                 </div>
                 <div class="skills">
                     <span class="skill">Premiere Pro</span>
@@ -263,25 +240,25 @@
       </div>
 
       <!-- Video 2 -->
-<div class="video-card fade-in">
-  <div class="video-thumbnail"
-       style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
-       data-video-id="LnYnVtMKY8Q"
-       onclick="openVideoModal(this)">
-  </div>
-  <div class="video-info">
-    <h4 class="thai-text">สารคดีท่องเที่ยว - เที่ยวไทยไปกับเรา</h4>
-    <p class="thai-text">สารคดีท่องเที่ยวแนะนำสถานที่ท่องเที่ยวในประเทศไทย ใช้เทคนิคการตัดต่อแบบ cinematic storytelling</p>
-    <div class="video-tags">
-      <span class="video-tag">Documentary</span>
-      <span class="video-tag">Travel</span>
-      <span class="video-tag">Cinematic</span>
-    </div>
-    <span class="video-link" data-video-id="LnYnVtMKY8Q" onclick="openVideoModal(this)">
-      <span class="thai-text">ดูวิดีโอเต็ม</span>
-    </span>
-  </div>
-</div>
+      <div class="video-card fade-in">
+        <div class="video-thumbnail"
+             style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
+             data-video-id="LnYnVtMKY8Q"
+             onclick="openVideoModal(this)">
+        </div>
+        <div class="video-info">
+          <h4 class="thai-text">สารคดีท่องเที่ยว - เที่ยวไทยไปกับเรา</h4>
+          <p class="thai-text">สารคดีท่องเที่ยวแนะนำสถานที่ท่องเที่ยวในประเทศไทย ใช้เทคนิคการตัดต่อแบบ cinematic storytelling</p>
+          <div class="video-tags">
+            <span class="video-tag">Documentary</span>
+            <span class="video-tag">Travel</span>
+            <span class="video-tag">Cinematic</span>
+          </div>
+          <span class="video-link" data-video-id="LnYnVtMKY8Q" onclick="openVideoModal(this)">
+            <span class="thai-text">ดูวิดีโอเต็ม</span>
+          </span>
+        </div>
+      </div>
 
       <!-- Video 3 -->
       <div class="video-card fade-in">
@@ -299,69 +276,6 @@
             <span class="video-tag">Creative</span>
           </div>
           <span class="video-link" data-video-id="KwTT53qWf8o" onclick="openVideoModal(this)">
-            <span class="thai-text">ดูวิดีโอเต็ม</span>
-          </span>
-        </div>
-      </div>
-
-      <!-- Video 4 -->
-      <div class="video-card fade-in">
-        <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/1HufxehhG50/maxresdefault.jpg');"
-             data-video-id="1HufxehhG50"
-             onclick="openVideoModal(this)">
-        </div>
-        <div class="video-info">
-          <h4 class="thai-text">คอร์ปอเรทวิดีโอ - บริษัทเทคโนโลยี</h4>
-          <p class="thai-text">วิดีโอแนะนำบริษัทเทคโนโลยี ใช้ Motion Graphics และ Infographic เพื่อนำเสนอข้อมูลอย่างน่าสนใจ</p>
-          <div class="video-tags">
-            <span class="video-tag">Corporate</span>
-            <span class="video-tag">Infographic</span>
-            <span class="video-tag">Professional</span>
-          </div>
-          <span class="video-link" data-video-id="1HufxehhG50" onclick="openVideoModal(this)">
-            <span class="thai-text">ดูวิดีโอเต็ม</span>
-          </span>
-        </div>
-      </div>
-
-<!-- Video 5 -->
-      <div class="video-card fade-in">
-        <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/maxresdefault.jpg');"
-             data-video-id="swQDiWpz-4s"
-             onclick="openVideoModal(this)">
-        </div>
-        <div class="video-info">
-          <h4 class="thai-text">คอร์ปอเรทวิดีโอ - บริษัทเทคโนโลยี</h4>
-          <p class="thai-text">วิดีโอแนะนำบริษัทเทคโนโลยี ใช้ Motion Graphics และ Infographic เพื่อนำเสนอข้อมูลอย่างน่าสนใจ</p>
-          <div class="video-tags">
-            <span class="video-tag">Corporate</span>
-            <span class="video-tag">Infographic</span>
-            <span class="video-tag">Professional</span>
-          </div>
-          <span class="video-link" data-video-id="swQDiWpz-4s" onclick="openVideoModal(this)">
-            <span class="thai-text">ดูวิดีโอเต็ม</span>
-          </span>
-        </div>
-      </div>
-
-<!-- Video 6 -->
-      <div class="video-card fade-in">
-        <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/Sq4l1AdgiU0/maxresdefault.jpg');"
-             data-video-id="Sq4l1AdgiU0"
-             onclick="openVideoModal(this)">
-        </div>
-        <div class="video-info">
-          <h4 class="thai-text">คอร์ปอเรทวิดีโอ - บริษัทเทคโนโลยี</h4>
-          <p class="thai-text">วิดีโอแนะนำบริษัทเทคโนโลยี ใช้ Motion Graphics และ Infographic เพื่อนำเสนอข้อมูลอย่างน่าสนใจ</p>
-          <div class="video-tags">
-            <span class="video-tag">Corporate</span>
-            <span class="video-tag">Infographic</span>
-            <span class="video-tag">Professional</span>
-          </div>
-          <span class="video-link" data-video-id="Sq4l1AdgiU0" onclick="openVideoModal(this)">
             <span class="thai-text">ดูวิดีโอเต็ม</span>
           </span>
         </div>
@@ -386,8 +300,8 @@
       <!-- วิดีโอที่ 1 -->
       <div class="video-card">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');"
-             data-video-id="dQw4w9WgXcQ"
+             style="background-image: url('https://img.youtube.com/vi/Kgp4WWKGrb8/hqdefault.jpg');"
+             data-video-id="Kgp4WWKGrb8"
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
@@ -399,8 +313,8 @@
       <!-- วิดีโอที่ 2 -->
       <div class="video-card">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
-             data-video-id="LnYnVtMKY8Q"
+             style="background-image: url('https://img.youtube.com/vi/1HufxehhG50/hqdefault.jpg');"
+             data-video-id="1HufxehhG50"
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
@@ -412,8 +326,8 @@
       <!-- วิดีโอที่ 3 -->
       <div class="video-card">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/KwTT53qWf8o/hqdefault.jpg');"
-             data-video-id="KwTT53qWf8o"
+             style="background-image: url('https://img.youtube.com/vi/swQDiWpz-4s/hqdefault.jpg');"
+             data-video-id="swQDiWpz-4s"
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
@@ -477,48 +391,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="thumbnail-card fade-in">
-                <div class="thumbnail-image">
-                    <span class="thai-text" data-en="Lifestyle" data-th="ไลฟ์สไตล์">ไลฟ์สไตล์</span>
-                    <div class="thumbnail-overlay">NEW</div>
-                </div>
-                <div class="thumbnail-info">
-                    <h4 class="thai-text" data-en="Thumbnail for Lifestyle Channel" data-th="Thumbnail สำหรับช่องไลฟ์สไตล์">Thumbnail สำหรับช่องไลฟ์สไตล์</h4>
-                    <div class="thumbnail-stats">
-                        <span class="thai-text">CTR: 14.3%</span>
-                        <span class="thai-text">Views: 195K+</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="thumbnail-card fade-in">
-                <div class="thumbnail-image">
-                    <span class="thai-text" data-en="Education" data-th="การศึกษา">การศึกษา</span>
-                    <div class="thumbnail-overlay">EDU</div>
-                </div>
-                <div class="thumbnail-info">
-                    <h4 class="thai-text" data-en="Thumbnail for Education Channel" data-th="Thumbnail สำหรับช่องการศึกษา">Thumbnail สำหรับช่องการศึกษา</h4>
-                    <div class="thumbnail-stats">
-                        <span class="thai-text">CTR: 11.8%</span>
-                        <span class="thai-text">Views: 145K+</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="thumbnail-card fade-in">
-                <div class="thumbnail-image">
-                    <span class="thai-text" data-en="Travel" data-th="ท่องเที่ยว">ท่องเที่ยว</span>
-                    <div class="thumbnail-overlay">VLOG</div>
-                </div>
-                <div class="thumbnail-info">
-                    <h4 class="thai-text" data-en="Thumbnail for Travel Channel" data-th="Thumbnail สำหรับช่องท่องเที่ยว">Thumbnail สำหรับช่องท่องเที่ยว</h4>
-                    <div class="thumbnail-stats">
-                        <span class="thai-text">CTR: 16.9%</span>
-                        <span class="thai-text">Views: 280K+</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- View More Button for Photo Gallery -->
@@ -569,30 +441,6 @@
                     </div>
                     <div class="stars">★★★★★</div>
                     <p class="review-text thai-text" data-en="Professional, creative, and always delivers on time. Arliya's Color Grading makes our documentary have a perfect cinematic feel." data-th="มืออาชีพ สร้างสรรค์ และส่งงานตรงเวลาเสมอ งาน Color Grading ของ Arliya ทำให้สารคดีของเรามีความรู้สึกแบบ cinematic ที่สมบูรณ์แบบ">"มืออาชีพ สร้างสรรค์ และส่งงานตรงเวลาเสมอ งาน Color Grading ของ Arliya ทำให้สารคดีของเรามีความรู้สึกแบบ cinematic ที่สมบูรณ์แบบ"</p>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-avatar">ล</div>
-                        <div class="reviewer-info">
-                            <h4 class="thai-text" data-en="Lilly Thanawat" data-th="คุณลิลลี่ ธนาวัฒน์">คุณลิลลี่ ธนาวัฒน์</h4>
-                            <p class="thai-text" data-en="Event Coordinator" data-th="Event Coordinator">Event Coordinator</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text thai-text" data-en="Arliya edited our wedding video beautifully. He captured every emotional moment and created a masterpiece that we will keep forever." data-th="Arliya ตัดต่อวิดีโองานแต่งงานของเราได้สวยงามมาก เขาจับทุกช่วงเวลาที่มีอารมณ์และสร้างผลงานชิ้นเอกที่เราจะเก็บไว้ตลอดไป">"Arliya ตัดต่อวิดีโองานแต่งงานของเราได้สวยงามมาก เขาจับทุกช่วงเวลาที่มีอารมณ์และสร้างผลงานชิ้นเอกที่เราจะเก็บไว้ตลอดไป"</p>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-avatar">อ</div>
-                        <div class="reviewer-info">
-                            <h4 class="thai-text" data-en="Anucha Rattanaphan" data-th="คุณอนุชา รัตนพันธ์">คุณอนุชา รัตนพันธ์</h4>
-                            <p class="thai-text" data-en="YouTuber" data-th="YouTuber">YouTuber</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text thai-text" data-en="The thumbnail that Arliya designed for my channel increased CTR by over 200% and views increased significantly. Very worth it!" data-th="Thumbnail ที่ Arliya ออกแบบให้ช่องของผมทำให้ CTR เพิ่มขึ้นกว่า 200% และยอดวิวเพิ่มขึ้นอย่างมาก คุ้มค่ามากๆ!">"Thumbnail ที่ Arliya ออกแบบให้ช่องของผมทำให้ CTR เพิ่มขึ้นกว่า 200% และยอดวิวเพิ่มขึ้นอย่างมาก คุ้มค่ามากๆ!"</p>
                 </div>
                 
                 <!-- Duplicate for seamless loop -->
@@ -722,15 +570,15 @@
         <p class="section-subtitle thai-text fade-in" data-en="Connect with us on social media platforms" data-th="ติดตามเราได้ทางโซเชียลมีเดีย">ติดตามเราได้ทางโซเชียลมีเดีย</p>
     
         <div class="social-grid">
-            <a href="https://www.facebook.com/Arliya" class="social-card fade-in" target="_blank" onclick="trackEvent('click', 'Social Media', 'Facebook', 1)">
+            <a href="https://www.facebook.com/ArliyaPhounsavath" class="social-card fade-in" target="_blank">
                 <div class="social-icon facebook">
-                    <img src="https://imgstore.org/a/6cuxq4d94yzl " alt="Facebook Icon" style="width: 75px; height: 75px;">
+                    <img src="https://imgstore.org/a/6cuxq4d94yzl" alt="Facebook Icon" style="width: 75px; height: 75px;">
                 </div>
                 <h4>Facebook</h4>
                 <p class="thai-text" data-en="Follow my latest updates" data-th="ติดตามรายระเอียดผลงานอื่นๆ">ติดตามรายระเอียดผลงานอื่นๆ</p>
             </a>
             
-            <a href="https://www.instagram.com/Arliya" class="social-card fade-in" target="_blank" onclick="trackEvent('click', 'Social Media', 'Instagram', 1)">
+            <a href="https://www.instagram.com/ArliyaPhounsavath" class="social-card fade-in" target="_blank">
                 <div class="social-icon instagram">
                     <img src="https://imgstore.org/a/6cuy21rqm3r6" alt="Instagram Icon" style="width: 75px; height: 75px;">
                 </div>
@@ -738,7 +586,7 @@
                 <p class="thai-text" data-en="Short video" data-th="ผลงานวิดิโอสั้น">ผลงานวิดิโอสั้น</p>
             </a>
 
-            <a href="https://www.tiktok.com/@Arliya" class="social-card fade-in" target="_blank" onclick="trackEvent('click', 'Social Media', 'TikTok', 1)">
+            <a href="https://www.tiktok.com/@ArliyaPhounsavath" class="social-card fade-in" target="_blank">
                 <div class="social-icon tiktok">
                     <img src="https://imgstore.org/a/6cuy4rft4b7m" alt="TikTok Icon" style="width: 75px; height: 75px;">
                 </div>
@@ -746,7 +594,7 @@
                 <p class="thai-text" data-en="Short video" data-th="ผลงานวิดิโอสั้น">ผลงานวิดิโอสั้น</p>
             </a>
 
-            <a href="https://www.youtube.com/@Arliya" class="social-card fade-in" target="_blank" onclick="trackEvent('click', 'Social Media', 'YouTube', 1)">
+            <a href="https://www.youtube.com/@ArliyaPhounsavath" class="social-card fade-in" target="_blank">
                 <div class="social-icon youtube">
                     <img src="https://imgstore.org/a/6cuy5wesrwfk" alt="YouTube Icon" style="width: 75px; height: 75px;">
                 </div>
@@ -758,7 +606,7 @@
 </section>
 
 <!-- Scroll to top button -->
-<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">⬆</button>
 
 <!-- Floating Contact Buttons -->
 <div class="floating-contacts">
@@ -766,16 +614,13 @@
         <span>💬</span>
     </div>
     <div class="floating-contact-menu" id="contactMenu">
-        <a href="https://wa.me/85602058665104" class="floating-btn whatsapp" target="_blank" title="WhatsApp"
-           onclick="trackEvent('click', 'Floating Contact', 'WhatsApp', 1)">
+        <a href="https://wa.me/85602058665104" class="floating-btn whatsapp" target="_blank" title="WhatsApp">
             <img src="https://imgstore.org/a/6cuw0mpglp5m" alt="WhatsApp Icon" style="width: 35px; height:auto;">
         </a>
-        <a href="https://t.me/Ayaya390" class="floating-btn telegram" target="_blank" title="Telegram"
-           onclick="trackEvent('click', 'Floating Contact', 'Telegram', 1)">
+        <a href="https://t.me/Ayaya390" class="floating-btn telegram" target="_blank" title="Telegram">
             <img src="https://imgstore.org/a/6cuw39dz1jji" alt="Telegram Icon" style="width:35px; height:auto;">
         </a>
-        <a href="mailto:angyeeephounsavath@gmail.com" class="floating-btn email" title="Email"
-           onclick="trackEvent('click', 'Floating Contact', 'Email', 1)">
+        <a href="mailto:angyeeephounsavath@gmail.com" class="floating-btn email" title="Email">
             <img src="https://imgstore.org/a/6cuwa76kvvzz" alt="Email Icon" style="width:35px; height:auto;">
         </a>
     </div>

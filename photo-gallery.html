@@ -8,7 +8,7 @@
 <meta name="google-site-verification" content="lQsdFmhv4VQC3Fy1-UxIpgtMtcVdDWST0moAGByS0tM" />
 
 <!-- Security Meta Tags -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -19,6 +19,9 @@
 <!-- Enhanced SEO Meta Tags -->
 <meta name="description" content="Arliya - ผลงานรูปภาพ รวมผลงานการถ่ายภาพ YouTube Thumbnails และการออกแบบกราฟิก">
 <meta name="keywords" content="ถ่ายภาพ, photography, YouTube thumbnails, graphic design, photo editing">
+
+<!-- Favicon and App Icons -->
+<link rel="shortcut icon" href="favicon.ico">
 
 <!-- Preconnect for Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +40,7 @@
 <div class="photo-modal" id="photoModal">
     <div class="photo-modal-content">
         <button class="photo-modal-close" id="closePhotoModal">&times;</button>
-        <img id="photoModalImage" src="/placeholder.svg" alt="Photo">
+        <img id="photoModalImage" src="/placeholder.svg" alt="Gallery Photo">
     </div>
 </div>
 
@@ -241,7 +244,7 @@
 </section>
 
 <!-- Scroll to top button -->
-<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">⬆</button>
 
 <!-- Floating Contact Buttons -->
 <div class="floating-contacts">
@@ -262,53 +265,6 @@
 </div>
 
 <script src="script.js"></script>
-<script>
-// Photo Modal Functions
-function openPhotoModal(imageSrc) {
-    const modal = document.getElementById('photoModal');
-    const modalImage = document.getElementById('photoModalImage');
-    
-    if (modal && modalImage) {
-        modalImage.src = imageSrc;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closePhotoModal() {
-    const modal = document.getElementById('photoModal');
-    
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Photo Modal Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    const closeBtn = document.getElementById('closePhotoModal');
-    const modal = document.getElementById('photoModal');
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closePhotoModal);
-    }
-    
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closePhotoModal();
-            }
-        });
-    }
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closePhotoModal();
-        }
-    });
-});
-</script>
 
 </body>
 </html>

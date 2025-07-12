@@ -60,7 +60,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 1rem;
 }
 
 /* Enhanced Loading Animation */
@@ -652,21 +652,9 @@ nav {
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2.5rem;
   margin-top: 3rem;
-}
-
-@media (max-width: 992px) {
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .video-card {
@@ -1559,8 +1547,12 @@ nav {
   box-shadow: var(--shadow-lg);
 }
 
-/* Mobile Responsive Design */
+/* Enhanced Mobile Responsive Design */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
   .header-controls {
     gap: 0.5rem;
   }
@@ -1579,16 +1571,24 @@ nav {
     width: 100%;
     background: rgba(15, 23, 42, 0.98);
     flex-direction: column;
-    padding: 2rem;
-    gap: 1.5rem;
+    padding: 1.5rem;
+    gap: 1rem;
     border-radius: 0 0 20px 20px;
     backdrop-filter: blur(20px);
     border: 1px solid var(--border-color);
     border-top: none;
+    box-shadow: var(--shadow-lg);
   }
 
   .nav-links.active {
     display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 1rem;
   }
 
   .mobile-menu {
@@ -1596,136 +1596,57 @@ nav {
   }
 
   .hero {
-    padding: 120px 0 60px;
-    min-height: auto;
+    padding: 80px 0 2rem;
+    min-height: 80vh;
   }
 
   .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
   }
 
   .hero-text h2 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-text .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
   }
 
   .hero-buttons {
     justify-content: center;
     gap: 1rem;
-  }
-
-  .btn {
-    flex: 1;
-    min-width: 140px;
-    padding: 12px 24px;
-    font-size: 0.95rem;
-  }
-
-  .profile-container {
-    width: 250px;
-    height: 250px;
-  }
-
-  .profile-img {
-    width: 230px;
-    height: 230px;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 3rem;
-  }
-
-  .stats {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .stat {
-    min-width: 120px;
-  }
-
-  .services-grid,
-  .video-grid,
-  .thumbnail-grid,
-  .photo-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .review-card {
-    min-width: 300px;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .contact-form {
-    padding: 2rem 1.5rem;
-    margin: 0 15px;
-  }
-
-  .social-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-
-  .floating-contacts {
-    bottom: 80px;
-    right: 20px;
-  }
-
-  .floating-contact-toggle {
-    width: 60px;
-    height: 60px;
-    font-size: 1.4rem;
-  }
-
-  .floating-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-
-  .video-modal-content,
-  .photo-modal-content {
-    width: 95%;
-    margin: 0 10px;
-  }
-
-  .video-modal-close,
-  .photo-modal-close {
-    top: -50px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-text h2 {
-    font-size: 1.4rem;
-  }
-
-  .hero-buttons {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2rem;
   }
 
   .btn {
     width: 100%;
-    max-width: 220px;
+    max-width: 250px;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    min-width: auto;
+  }
+
+  .skills {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .skill {
+    font-size: 0.8rem;
+    padding: 6px 12px;
   }
 
   .profile-container {
@@ -1736,30 +1657,297 @@ nav {
   .profile-img {
     width: 180px;
     height: 180px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .decorative-elements {
+    width: 240px;
+    height: 240px;
+    top: -20px;
+    left: -20px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
   }
 
   .stats {
+    justify-content: center;
+    gap: 1rem;
     flex-direction: column;
-    align-items: center;
+  }
+
+  .stat {
+    min-width: auto;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 1.2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .contact-form {
-    padding: 1.5rem 1rem;
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .thumbnail-grid,
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    min-width: 280px;
+    padding: 1.5rem;
   }
 
   .section-title {
     font-size: 1.8rem;
   }
 
-  .photo-grid {
+  .section-subtitle {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+
+  .social-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .social-card {
+    padding: 1.5rem;
+  }
+
+  .social-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .floating-contacts {
+    bottom: 70px;
+    right: 15px;
+  }
+
+  .floating-contact-toggle {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+  }
+
+  .floating-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .video-modal-content,
+  .photo-modal-content {
+    width: 95%;
+    margin: 0 0.5rem;
+  }
+
+  .video-modal-close,
+  .photo-modal-close {
+    top: -45px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  /* Enhanced touch targets for mobile */
+  .video-card,
+  .photo-card,
+  .service-card {
+    min-height: 44px;
+  }
+
+  .video-thumbnail::before {
+    font-size: 2.5rem;
+  }
+
+  /* Better spacing for sections */
+  .services,
+  .video-portfolio,
+  .youtube-thumbnails,
+  .reviews,
+  .about,
+  .contact,
+  .social-media {
+    padding: 3rem 0;
+  }
+
+  .photo-gallery {
+    padding: 1.5rem 0 3rem;
+  }
+
+  /* Improved video and photo info padding */
+  .video-info,
+  .photo-info {
+    padding: 1.5rem;
+  }
+
+  .video-info h4,
+  .photo-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .video-info p,
+  .photo-info p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .video-tags,
+  .photo-tags {
+    gap: 0.5rem;
+  }
+
+  .video-tag,
+  .photo-tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero {
+    padding: 70px 0 1.5rem;
+    min-height: 75vh;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.1rem;
+  }
+
+  .hero-text .subtitle {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    max-width: 220px;
+  }
+
+  .profile-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .contact-form {
+    padding: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .photo-grid {
+    gap: 1rem;
   }
 
   .photo-modal-content {
     max-width: 95%;
     max-height: 85%;
+  }
+
+  .service-card {
+    padding: 1.2rem;
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .video-info,
+  .photo-info {
+    padding: 1.2rem;
+  }
+
+  .floating-contact-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .floating-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Improved text readability on very small screens */
+  .video-info h4,
+  .photo-info h4 {
+    font-size: 0.95rem;
+  }
+
+  .video-info p,
+  .photo-info p {
+    font-size: 0.85rem;
+  }
+
+  .video-tag,
+  .photo-tag {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  /* Better form spacing */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 12px 14px;
+    font-size: 0.95rem;
   }
 }
 
@@ -1805,5 +1993,139 @@ nav {
   }
   50% {
     transform: translateX(25px);
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 768px) {
+  /* Improve touch interactions */
+  .video-card:hover,
+  .photo-card:hover,
+  .service-card:hover {
+    transform: none;
+  }
+
+  .video-card:active,
+  .photo-card:active,
+  .service-card:active {
+    transform: scale(0.98);
+  }
+
+  /* Optimize reviews for mobile */
+  .reviews-track {
+    animation-duration: 20s;
+  }
+
+  .review-card {
+    min-width: 260px;
+    padding: 1.5rem;
+  }
+
+  /* Better mobile navigation */
+  .nav-links a:hover {
+    transform: none;
+    background: var(--bg-glass-hover);
+  }
+
+  /* Improved mobile header */
+  header {
+    padding: 0.6rem 0;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: 70vh;
+    padding: 70px 0 2rem;
+  }
+
+  .hero-content {
+    gap: 1.5rem;
+  }
+
+  .profile-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* High DPI displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .profile-img {
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .wave {
+    animation: none;
+  }
+
+  .reviews-track {
+    animation: none;
+  }
+
+  .profile-bg {
+    animation: none;
+  }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1rem;
+  }
+
+  .btn {
+    max-width: 200px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .contact-form {
+    padding: 1rem;
+  }
+
+  .service-card,
+  .video-info,
+  .photo-info {
+    padding: 1rem;
+  }
+
+  .floating-contacts {
+    bottom: 60px;
+    right: 10px;
   }
 }

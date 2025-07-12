@@ -222,6 +222,28 @@ function closeVideoModal() {
   }
 }
 
+// Photo Modal Functions
+function openPhotoModal(imageSrc) {
+  const modal = document.getElementById("photoModal")
+  const modalImage = document.getElementById("photoModalImage")
+
+  if (modal && modalImage) {
+    modalImage.src = imageSrc
+    modalImage.alt = "Gallery Photo - " + imageSrc.split("text=")[1]?.replace(/\+/g, " ") || "Gallery Photo"
+    modal.classList.add("active")
+    document.body.style.overflow = "hidden"
+  }
+}
+
+function closePhotoModal() {
+  const modal = document.getElementById("photoModal")
+
+  if (modal) {
+    modal.classList.remove("active")
+    document.body.style.overflow = "auto"
+  }
+}
+
 // Video Modal Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("closeVideoModal")
@@ -239,13 +261,27 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
+  // Photo Modal Event Listeners
+  const closePhotoBtn = document.getElementById("closePhotoModal")
+  const photoModal = document.getElementById("photoModal")
+
+  if (closePhotoBtn) {
+    closePhotoBtn.addEventListener("click", closePhotoModal)
+  }
+
+  if (photoModal) {
+    photoModal.addEventListener("click", (e) => {
+      if (e.target === photoModal) {
+        closePhotoModal()
+      }
+    })
+  }
+
   // Close modal with Escape key
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeVideoModal()
-      if (typeof window.closePhotoModal === "function") {
-        window.closePhotoModal()
-      }
+      closePhotoModal()
     }
   })
 })
@@ -627,9 +663,7 @@ document.addEventListener("keydown", (e) => {
   // Close modals with Escape key
   if (e.key === "Escape") {
     closeVideoModal()
-    if (typeof window.closePhotoModal === "function") {
-      window.closePhotoModal()
-    }
+    closePhotoModal()
   }
 
   // Navigate through video cards with arrow keys
@@ -702,45 +736,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Enhance form labels
-  document.querySelectorAll("label").forEach((label) => {
-    const input = document.getElementById(label.getAttribute("for"))
-    if (input && input.hasAttribute("required")) {
-      label.innerHTML += ' <span aria-label="required" style="color: #ef4444;">*</span>'
+  document.querySelectorAll(".form-group").forEach((group) => {
+    const label = group.querySelector("label")
+    const input = group.querySelector("input, textarea, select")
+    if (label && input && !input.id) {
+      const id = "field-" + Math.random().toString(36).substr(2, 9)
+      input.id = id
+      label.setAttribute("for", id)
     }
   })
 })
 
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-  let timeout
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout)
-      func(...args)
+// Print styles optimization
+const printStyles = document.createElement("style")
+printStyles.textContent = `
+  @media print {
+    .floating-contacts,
+    .scroll-top,
+    .video-modal,
+    .photo-modal,
+    header,
+    .wave {
+      display: none !important;
     }
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
+    
+    .hero,
+    .services,
+    .about {
+      page-break-inside: avoid;
+    }
+    
+    .video-card,
+    .service-card {
+      break-inside: avoid;
+    }
   }
-}
+`
+document.head.appendChild(printStyles)
 
-// Apply debouncing to scroll handler
-const debouncedScrollHandler = debounce(updateOnScroll, 10)
-window.removeEventListener("scroll", updateOnScroll)
-window.addEventListener("scroll", debouncedScrollHandler)
-
-// Enhanced error boundary for better error handling
-window.addEventListener("unhandledrejection", (event) => {
-  console.error("Unhandled promise rejection:", event.reason)
-  // Track unhandled promise rejections
-  const trackEvent = window.trackEvent || (() => {})
-  trackEvent("promise_rejection", "Error", event.reason?.message || "Unknown error", 1)
-})
-
-// Initialize all functionality when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Arliya Portfolio - Enhanced version loaded successfully!")
-
-  // Track page view
-  const trackEvent = window.trackEvent || (() => {})
-  trackEvent("page_view", "Navigation", window.location.pathname, 1)
-})
+console.log("🎬 Arliya Portfolio - Script loaded successfully!")
+console.log("📧 Contact: angyeeephounsavath@gmail.com")
+console.log("🌐 Website: https://arliya619.github.io/")
