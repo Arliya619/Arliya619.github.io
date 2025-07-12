@@ -24,7 +24,7 @@ select option {
 
 body {
   font-family: "Inter", "Kanit", sans-serif;
-  background: linear-gradient(135deg, #08030b 0%, #12001d 50%, #0c0c0c 100%);
+  background: linear-gradient(135deg, #14071b 0%, #220037 50%, #00031e 100%);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
