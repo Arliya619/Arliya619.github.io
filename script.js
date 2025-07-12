@@ -150,11 +150,11 @@ function updateOnScroll() {
   const scrollY = window.scrollY
 
   if (scrollY > 100) {
-    header.style.background = "rgba(0, 0, 0, 0.98)"
+    header.style.background = "rgba(15, 23, 42, 0.98)"
     header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)"
     if (scrollTop) scrollTop.classList.add("visible")
   } else {
-    header.style.background = "rgba(0, 0, 0, 0.95)"
+    header.style.background = "rgba(15, 23, 42, 0.95)"
     header.style.boxShadow = "none"
     if (scrollTop) scrollTop.classList.remove("visible")
   }
@@ -243,6 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeVideoModal()
+      if (typeof window.closePhotoModal === "function") {
+        window.closePhotoModal()
+      }
     }
   })
 })
@@ -306,365 +309,438 @@ if (contactForm) {
       })
 
       if (response.ok) {
-        // Send to WhatsApp
-        const whatsappMessage = encodeURIComponent(`🎬 *New Project Inquiry*
-
-👤 *Name:* ${data.name}
-📧 *Email:* ${data.email}
-🎯 *Project:* ${data.project}
-💰 *Budget:* ${data.budget}
-
-📝 *Message:*
-${data.message}
-
----
-Sent from Arliya Portfolio Website`)
-
-        // Open WhatsApp
-        setTimeout(() => {
-          window.open(`https://wa.me/85602058665104?text=${whatsappMessage}`, "_blank")
-        }, 1000)
-
-        // Open Telegram
-        setTimeout(() => {
-          window.open(`https://t.me/Ayaya390`, "_blank")
-        }, 2000)
-
-        // Show success message
-if (formStatus) {
-    formStatus.className = 'form-status success';
-    formStatus.innerHTML = `
-        <strong>✅ Message sent successfully!</strong><br>
-        📧 Your email has been delivered<br>
-        We will get back to you within 24 hours<br><br>
-
-        <strong>✅ ส่งข้อความสำเร็จ!</strong><br>
-        📧 อีเมลถูกส่งไปยังผู้รับแล้วแล้ว<br>
-        เราจะติดต่อกลับภายใน 24 ชั่วโมง
-    `;
-    formStatus.style.display = 'block';
-}
-        // Reset form
+        if (formStatus) {
+          formStatus.className = "form-status success"
+          formStatus.textContent = "ข้อความของคุณถูกส่งเรียบร้อยแล้ว! เราจะติดต่อกลับโดยเร็วที่สุด"
+          formStatus.style.display = "block"
+        }
         this.reset()
 
-        // Track successful submission
-        trackEvent("form_submit", "Contact", "Form Submission Success", 1)
+        // Track successful form submission
+        trackEvent("form_success", "Contact", "Form Submitted Successfully", 1)
+
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          if (formStatus) formStatus.style.display = "none"
+        }, 5000)
       } else {
-        throw new Error("Form submission failed")
+        throw new Error("Network response was not ok")
       }
     } catch (error) {
-      // Show error message
+      console.error("Form submission error:", error)
       if (formStatus) {
         formStatus.className = "form-status error"
-        formStatus.textContent = "ขออภัย เกิดข้อผิดพลาดในการส่งอีเมล กรุณาลองใหม่อีกครั้งหรือติดต่อเราโดยตรงทาง WhatsApp หรือ Telegram"
+        formStatus.textContent = "เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง หรือติดต่อผ่านช่องทางอื่น"
         formStatus.style.display = "block"
       }
-      console.error("Form submission error:", error)
 
-      // Track error
+      // Track form submission error
       const trackEvent = window.trackEvent || (() => {})
-      trackEvent("form_submit", "Contact", "Form Submission Error", 1)
+      trackEvent("form_error", "Contact", "Form Submission Error", 1)
     } finally {
-      // Reset button
       submitBtn.textContent = originalText
       submitBtn.disabled = false
     }
   })
 }
 
-// Floating Contact Menu
+// Floating contact menu
 const contactToggle = document.getElementById("contactToggle")
 const contactMenu = document.getElementById("contactMenu")
 
 if (contactToggle && contactMenu) {
   contactToggle.addEventListener("click", () => {
     contactMenu.classList.toggle("active")
-
-    // Track floating contact menu toggle event
-    const trackEvent = window.trackEvent || (() => {})
     const isActive = contactMenu.classList.contains("active")
-    trackEvent("click", "Floating Contact", isActive ? "Menu Open" : "Menu Close", 1)
+
+    // Animate toggle button
+    contactToggle.style.transform = isActive ? "rotate(45deg)" : "rotate(0deg)"
+
+    // Track floating contact menu event
+    const trackEvent = window.trackEvent || (() => {})
+    trackEvent("click", "Floating Contact", isActive ? "Menu Opened" : "Menu Closed", 1)
   })
 
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (!contactToggle.contains(e.target) && !contactMenu.contains(e.target)) {
       contactMenu.classList.remove("active")
+      contactToggle.style.transform = "rotate(0deg)"
     }
   })
 }
 
-// Video Slider Functionality
-let currentSlideIndex = 0
-const slides = document.querySelectorAll(".video-slide")
-const dots = document.querySelectorAll(".dot")
-
-function showSlide(index) {
-  // Hide all slides
-  slides.forEach((slide) => slide.classList.remove("active"))
-  dots.forEach((dot) => dot.classList.remove("active"))
-
-  // Show current slide
-  if (slides[index]) {
-    slides[index].classList.add("active")
-  }
-  if (dots[index]) {
-    dots[index].classList.add("active")
-  }
-
-  currentSlideIndex = index
-}
-
-function changeSlide(direction) {
-  let newIndex = currentSlideIndex + direction
-
-  if (newIndex >= slides.length) {
-    newIndex = 0
-  } else if (newIndex < 0) {
-    newIndex = slides.length - 1
-  }
-
-  showSlide(newIndex)
-
-  // Track slider navigation event
-  const trackEvent = window.trackEvent || (() => {})
-  trackEvent("slider_navigation", "Video Slider", `Slide ${newIndex + 1}`, 1)
-}
-
-function currentSlide(index) {
-  showSlide(index - 1)
-
-  // Track slider dot click event
-  const trackEvent = window.trackEvent || (() => {})
-  trackEvent("slider_dot", "Video Slider", `Dot ${index}`, 1)
-}
-
-// Auto-advance slider
-function autoAdvanceSlider() {
-  changeSlide(1)
-}
-
-// Start auto-advance (every 5 seconds)
-let sliderInterval = setInterval(autoAdvanceSlider, 5000)
-
-// Pause auto-advance on hover
-const sliderContainer = document.querySelector(".video-slider-container")
-if (sliderContainer) {
-  sliderContainer.addEventListener("mouseenter", () => {
-    clearInterval(sliderInterval)
-  })
-
-  sliderContainer.addEventListener("mouseleave", () => {
-    sliderInterval = setInterval(autoAdvanceSlider, 5000)
-  })
-}
-
-// Add interactive effects
-document.querySelectorAll(".service-card, .video-card, .thumbnail-card").forEach((card) => {
-  card.addEventListener("mouseenter", function () {
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      this.style.transform = "translateY(-10px) scale(1.02)"
-    }
-  })
-
-  card.addEventListener("mouseleave", function () {
-    this.style.transform = "translateY(0) scale(1)"
-  })
-})
-
-// Stats animation
-const stats = document.querySelectorAll(".stat-number")
-const statsObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const target = entry.target
-        const text = target.textContent
-        const number = Number.parseInt(text)
-
-        if (!isNaN(number)) {
-          animateNumber(target, 0, number, 2000)
-          // Track stats animation event
-          const trackEvent = window.trackEvent || (() => {})
-          trackEvent("view", "Stats", "Stats Animation Triggered", number)
-        }
-
-        statsObserver.unobserve(target)
-      }
-    })
-  },
-  { threshold: 0.5 },
-)
-
-stats.forEach((stat) => statsObserver.observe(stat))
-
-function animateNumber(element, start, end, duration) {
-  const startTime = performance.now()
-  const suffix = element.textContent.replace(/\d+/g, "")
-
-  function update(currentTime) {
-    const elapsed = currentTime - startTime
-    const progress = Math.min(elapsed / duration, 1)
-    const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-    const current = Math.floor(start + (end - start) * easeOutQuart)
-
-    element.textContent = current + suffix
-
-    if (progress < 1) {
-      requestAnimationFrame(update)
-    }
-  }
-
-  requestAnimationFrame(update)
-}
-
-// Language Switcher (if needed)
+// Language switcher functionality
+let currentLang = "th"
 const langBtn = document.getElementById("langBtn")
-const currentLang = document.getElementById("currentLang")
-let isEnglish = false
+const currentLangSpan = document.getElementById("currentLang")
 
-if (langBtn && currentLang) {
+if (langBtn && currentLangSpan) {
   langBtn.addEventListener("click", () => {
-    isEnglish = !isEnglish
-    currentLang.textContent = isEnglish ? "EN" : "TH"
+    currentLang = currentLang === "th" ? "en" : "th"
+    currentLangSpan.textContent = currentLang.toUpperCase()
 
-    // Switch language for all elements with data attributes
+    // Update all elements with language attributes
     document.querySelectorAll("[data-en][data-th]").forEach((element) => {
-      const englishText = element.getAttribute("data-en")
-      const thaiText = element.getAttribute("data-th")
-
-      if (englishText && thaiText) {
-        element.textContent = isEnglish ? englishText : thaiText
+      const text = currentLang === "en" ? element.getAttribute("data-en") : element.getAttribute("data-th")
+      if (text) {
+        element.textContent = text
       }
     })
 
     // Track language switch event
     const trackEvent = window.trackEvent || (() => {})
-    trackEvent("language_switch", "UI", isEnglish ? "English" : "Thai", 1)
-  })
-}
+    trackEvent("language_switch", "UI", `Switched to ${currentLang.toUpperCase()}`, 1)
 
-// Smooth reveal animations for elements
-function revealOnScroll() {
-  const reveals = document.querySelectorAll(".fade-in:not(.visible)")
-
-  reveals.forEach((element) => {
-    const elementTop = element.getBoundingClientRect().top
-    const elementVisible = 150
-
-    if (elementTop < window.innerHeight - elementVisible) {
-      element.classList.add("visible")
-    }
-  })
-}
-
-window.addEventListener("scroll", revealOnScroll)
-
-// Initialize reveal on load
-document.addEventListener("DOMContentLoaded", revealOnScroll)
-
-// Keyboard navigation for accessibility
-document.addEventListener("keydown", (e) => {
-  // Video slider keyboard navigation
-  if (e.target.closest(".video-slider-container")) {
-    if (e.key === "ArrowLeft") {
-      e.preventDefault()
-      changeSlide(-1)
-    } else if (e.key === "ArrowRight") {
-      e.preventDefault()
-      changeSlide(1)
-    }
-  }
-})
-
-// Performance optimization: Lazy load videos
-const videos = document.querySelectorAll("video[data-src]")
-const videoObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const video = entry.target
-      const src = video.getAttribute("data-src")
-      if (src) {
-        video.src = src
-        video.removeAttribute("data-src")
-        videoObserver.unobserve(video)
-      }
-    }
-  })
-})
-
-videos.forEach((video) => videoObserver.observe(video))
-
-// Error handling for videos
-document.querySelectorAll("video").forEach((video) => {
-  video.addEventListener("error", function () {
-    console.warn("Video failed to load:", this.src)
-    // You could show a fallback image here
-  })
-})
-
-// Touch/swipe support for mobile slider
-let touchStartX = 0
-let touchEndX = 0
-
-if (sliderContainer) {
-  sliderContainer.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX
+    // Save language preference
+    localStorage.setItem("preferred-language", currentLang)
   })
 
-  sliderContainer.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX
-    handleSwipe()
-  })
-}
-
-function handleSwipe() {
-  const swipeThreshold = 50
-  const diff = touchStartX - touchEndX
-
-  if (Math.abs(diff) > swipeThreshold) {
-    if (diff > 0) {
-      // Swipe left - next slide
-      changeSlide(1)
-    } else {
-      // Swipe right - previous slide
-      changeSlide(-1)
-    }
-
-    // Track swipe event
-    const trackEvent = window.trackEvent || (() => {})
-    trackEvent("swipe", "Video Slider", diff > 0 ? "Next" : "Previous", 1)
+  // Load saved language preference
+  const savedLang = localStorage.getItem("preferred-language")
+  if (savedLang && savedLang !== currentLang) {
+    langBtn.click()
   }
 }
 
-// Initialize everything when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Arliya Portfolio loaded successfully!")
+// Enhanced performance monitoring
+if ("performance" in window) {
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const perfData = performance.getEntriesByType("navigation")[0]
+      const loadTime = perfData.loadEventEnd - perfData.loadEventStart
 
-  // Track page view event
+      // Track performance metrics
+      const trackEvent = window.trackEvent || (() => {})
+      trackEvent("performance", "Load Time", "Page Load", Math.round(loadTime))
+
+      // Log performance data for debugging
+      console.log("Performance Metrics:", {
+        loadTime: Math.round(loadTime),
+        domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
+        firstPaint: Math.round(performance.getEntriesByType("paint")[0]?.startTime || 0),
+      })
+    }, 0)
+  })
+}
+
+// Enhanced error handling
+window.addEventListener("error", (e) => {
+  console.error("JavaScript Error:", e.error)
+  // Track JavaScript errors
   const trackEvent = window.trackEvent || (() => {})
-  trackEvent("page_view", "Portfolio", "Homepage", 1)
+  trackEvent("javascript_error", "Error", e.message, 1)
 })
 
-// Service Worker registration (for PWA capabilities)
+// Service Worker registration for PWA capabilities
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/sw.js")
       .then((registration) => {
-        console.log("ServiceWorker registration successful")
+        console.log("SW registered: ", registration)
       })
-      .catch((err) => {
-        console.log("ServiceWorker registration failed")
+      .catch((registrationError) => {
+        console.log("SW registration failed: ", registrationError)
       })
   })
 }
 
-// Print styles optimization
-window.addEventListener("beforeprint", () => {
-  document.body.classList.add("printing")
+// Enhanced scroll animations with Intersection Observer
+const animateOnScroll = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const element = entry.target
+
+        // Add different animation classes based on element type
+        if (element.classList.contains("service-card")) {
+          element.style.animationDelay = `${Array.from(element.parentNode.children).indexOf(element) * 0.1}s`
+        }
+
+        if (element.classList.contains("video-card")) {
+          element.style.animationDelay = `${Array.from(element.parentNode.children).indexOf(element) * 0.15}s`
+        }
+
+        if (element.classList.contains("review-card")) {
+          element.style.animationDelay = `${Array.from(element.parentNode.children).indexOf(element) * 0.1}s`
+        }
+
+        element.classList.add("animate-in")
+      }
+    })
+  },
+  {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  },
+)
+
+// Observe elements for scroll animations
+document.querySelectorAll(".service-card, .video-card, .review-card, .thumbnail-card, .social-card").forEach((el) => {
+  animateOnScroll.observe(el)
 })
 
-window.addEventListener("afterprint", () => {
-  document.body.classList.remove("printing")
+// Add CSS for scroll animations
+const style = document.createElement("style")
+style.textContent = `
+  .animate-in {
+    animation: slideInUp 0.6s ease forwards;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+document.head.appendChild(style)
+
+// Enhanced typing effect for hero text
+function typeWriter(element, text, speed = 100) {
+  let i = 0
+  element.textContent = ""
+
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i)
+      i++
+      setTimeout(type, speed)
+    }
+  }
+
+  type()
+}
+
+// Apply typing effect to hero title on page load
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const heroTitle = document.querySelector(".hero h1")
+    if (heroTitle) {
+      const originalText = heroTitle.textContent
+      typeWriter(heroTitle, originalText, 80)
+    }
+  }, 1500)
+})
+
+// Enhanced form validation with real-time feedback
+const formInputs = document.querySelectorAll("#contactForm input, #contactForm textarea, #contactForm select")
+formInputs.forEach((input) => {
+  input.addEventListener("blur", validateField)
+  input.addEventListener("input", clearFieldError)
+})
+
+function validateField(e) {
+  const field = e.target
+  const value = field.value.trim()
+  let isValid = true
+  let errorMessage = ""
+
+  // Remove existing error styling
+  field.classList.remove("error")
+  const existingError = field.parentNode.querySelector(".field-error")
+  if (existingError) {
+    existingError.remove()
+  }
+
+  // Validation rules
+  switch (field.type) {
+    case "email":
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (value && !emailRegex.test(value)) {
+        isValid = false
+        errorMessage = "กรุณากรอกอีเมลให้ถูกต้อง"
+      }
+      break
+    case "text":
+      if (field.required && !value) {
+        isValid = false
+        errorMessage = "กรุณากรอกข้อมูลนี้"
+      }
+      break
+    case "textarea":
+      if (field.required && !value) {
+        isValid = false
+        errorMessage = "กรุณากรอกข้อความ"
+      }
+      break
+  }
+
+  if (!isValid) {
+    field.classList.add("error")
+    const errorDiv = document.createElement("div")
+    errorDiv.className = "field-error"
+    errorDiv.textContent = errorMessage
+    errorDiv.style.color = "#ef4444"
+    errorDiv.style.fontSize = "0.8rem"
+    errorDiv.style.marginTop = "0.5rem"
+    field.parentNode.appendChild(errorDiv)
+  }
+
+  return isValid
+}
+
+function clearFieldError(e) {
+  const field = e.target
+  field.classList.remove("error")
+  const existingError = field.parentNode.querySelector(".field-error")
+  if (existingError) {
+    existingError.remove()
+  }
+}
+
+// Add error styling to CSS
+const errorStyle = document.createElement("style")
+errorStyle.textContent = `
+  .form-group input.error,
+  .form-group textarea.error,
+  .form-group select.error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+  }
+`
+document.head.appendChild(errorStyle)
+
+// Lazy loading for images
+const imageObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const img = entry.target
+      img.src = img.dataset.src
+      img.classList.remove("lazy")
+      observer.unobserve(img)
+    }
+  })
+})
+
+document.querySelectorAll("img[data-src]").forEach((img) => {
+  imageObserver.observe(img)
+})
+
+// Enhanced keyboard navigation
+document.addEventListener("keydown", (e) => {
+  // Close modals with Escape key
+  if (e.key === "Escape") {
+    closeVideoModal()
+    if (typeof window.closePhotoModal === "function") {
+      window.closePhotoModal()
+    }
+  }
+
+  // Navigate through video cards with arrow keys
+  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+    const videoCards = document.querySelectorAll(".video-card")
+    const currentFocus = document.activeElement
+    const currentIndex = Array.from(videoCards).indexOf(currentFocus)
+
+    if (currentIndex !== -1) {
+      e.preventDefault()
+      let nextIndex
+      if (e.key === "ArrowRight") {
+        nextIndex = (currentIndex + 1) % videoCards.length
+      } else {
+        nextIndex = (currentIndex - 1 + videoCards.length) % videoCards.length
+      }
+      videoCards[nextIndex].focus()
+    }
+  }
+})
+
+// Make video cards focusable for keyboard navigation
+document.querySelectorAll(".video-card").forEach((card, index) => {
+  card.setAttribute("tabindex", "0")
+  card.setAttribute("role", "button")
+  card.setAttribute("aria-label", `Video ${index + 1}`)
+
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      const thumbnail = card.querySelector(".video-thumbnail")
+      if (thumbnail) {
+        openVideoModal(thumbnail)
+      }
+    }
+  })
+})
+
+// Enhanced accessibility features
+document.addEventListener("DOMContentLoaded", () => {
+  // Add skip to content link
+  const skipLink = document.createElement("a")
+  skipLink.href = "#main-content"
+  skipLink.textContent = "Skip to main content"
+  skipLink.className = "skip-link"
+  skipLink.style.cssText = `
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+    transition: top 0.3s;
+  `
+  skipLink.addEventListener("focus", () => {
+    skipLink.style.top = "6px"
+  })
+  skipLink.addEventListener("blur", () => {
+    skipLink.style.top = "-40px"
+  })
+  document.body.insertBefore(skipLink, document.body.firstChild)
+
+  // Add main content landmark
+  const mainContent = document.querySelector(".hero") || document.querySelector("main")
+  if (mainContent) {
+    mainContent.id = "main-content"
+  }
+
+  // Enhance form labels
+  document.querySelectorAll("label").forEach((label) => {
+    const input = document.getElementById(label.getAttribute("for"))
+    if (input && input.hasAttribute("required")) {
+      label.innerHTML += ' <span aria-label="required" style="color: #ef4444;">*</span>'
+    }
+  })
+})
+
+// Performance optimization: Debounce scroll events
+function debounce(func, wait) {
+  let timeout
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
+}
+
+// Apply debouncing to scroll handler
+const debouncedScrollHandler = debounce(updateOnScroll, 10)
+window.removeEventListener("scroll", updateOnScroll)
+window.addEventListener("scroll", debouncedScrollHandler)
+
+// Enhanced error boundary for better error handling
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("Unhandled promise rejection:", event.reason)
+  // Track unhandled promise rejections
+  const trackEvent = window.trackEvent || (() => {})
+  trackEvent("promise_rejection", "Error", event.reason?.message || "Unknown error", 1)
+})
+
+// Initialize all functionality when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Arliya Portfolio - Enhanced version loaded successfully!")
+
+  // Track page view
+  const trackEvent = window.trackEvent || (() => {})
+  trackEvent("page_view", "Navigation", window.location.pathname, 1)
 })
