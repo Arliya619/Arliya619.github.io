@@ -159,13 +159,6 @@ function updateOnScroll() {
     if (scrollTop) scrollTop.classList.remove("visible")
   }
 
-  // Parallax effect for hero section
-  const hero = document.querySelector(".hero")
-  if (hero && scrollY < window.innerHeight) {
-    const rate = scrollY * -0.3
-    hero.style.transform = `translateY(${rate}px)`
-  }
-
   ticking = false
 }
 
@@ -376,30 +369,50 @@ const langBtn = document.getElementById("langBtn")
 const currentLangSpan = document.getElementById("currentLang")
 
 if (langBtn && currentLangSpan) {
-  langBtn.addEventListener("click", () => {
-    currentLang = currentLang === "th" ? "en" : "th"
+  const updateLanguage = (newLang) => {
+    currentLang = newLang
     currentLangSpan.textContent = currentLang.toUpperCase()
 
     // Update all elements with language attributes
     document.querySelectorAll("[data-en][data-th]").forEach((element) => {
       const text = currentLang === "en" ? element.getAttribute("data-en") : element.getAttribute("data-th")
       if (text) {
-        element.textContent = text
+        // Use innerHTML to support <br> tags in some elements
+        if (element.tagName === "P" || element.tagName === "H1" || element.tagName === "H2") {
+          element.innerHTML = text
+        } else {
+          element.textContent = text
+        }
       }
     })
 
-    // Track language switch event
-    const trackEvent = window.trackEvent || (() => {})
-    trackEvent("language_switch", "UI", `Switched to ${currentLang.toUpperCase()}`, 1)
-
     // Save language preference
     localStorage.setItem("preferred-language", currentLang)
+  }
+
+  langBtn.addEventListener("click", () => {
+    if (langBtn.classList.contains("flipping")) return // Prevent multiple clicks during animation
+
+    langBtn.classList.add("flipping")
+    const newLang = currentLang === "th" ? "en" : "th"
+
+    // Track language switch event
+    const trackEvent = window.trackEvent || (() => {})
+    trackEvent("language_switch", "UI", `Switched to ${newLang.toUpperCase()}`, 1)
+
+    setTimeout(() => {
+      updateLanguage(newLang)
+    }, 300) // Half of the animation duration (0.6s)
+
+    langBtn.addEventListener("animationend", () => {
+      langBtn.classList.remove("flipping")
+    }, { once: true })
   })
 
   // Load saved language preference
   const savedLang = localStorage.getItem("preferred-language")
   if (savedLang && savedLang !== currentLang) {
-    langBtn.click()
+    updateLanguage(savedLang)
   }
 }
 
@@ -445,88 +458,6 @@ if ("serviceWorker" in navigator) {
       })
   })
 }
-
-// Enhanced scroll animations with Intersection Observer
-const animateOnScroll = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const element = entry.target
-
-        // Add different animation classes based on element type
-        if (element.classList.contains("service-card")) {
-          element.style.animationDelay = `${Array.from(element.parentNode.children).indexOf(element) * 0.1}s`
-        }
-
-        if (element.classList.contains("video-card")) {
-          element.style.animationDelay = `${Array.from(element.parentNode.children).indexOf(element) * 0.15}s`
-        }
-
-        if (element.classList.contains("review-card")) {
-          element.style.animationDelay = `${Array.from(element.parentNode.children).indexOf(element) * 0.1}s`
-        }
-
-        element.classList.add("animate-in")
-      }
-    })
-  },
-  {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  },
-)
-
-// Observe elements for scroll animations
-document.querySelectorAll(".service-card, .video-card, .review-card, .thumbnail-card, .social-card").forEach((el) => {
-  animateOnScroll.observe(el)
-})
-
-// Add CSS for scroll animations
-const style = document.createElement("style")
-style.textContent = `
-  .animate-in {
-    animation: slideInUp 0.6s ease forwards;
-  }
-  
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`
-document.head.appendChild(style)
-
-// Enhanced typing effect for hero text
-function typeWriter(element, text, speed = 100) {
-  let i = 0
-  element.textContent = ""
-
-  function type() {
-    if (i < text.length) {
-      element.textContent += text.charAt(i)
-      i++
-      setTimeout(type, speed)
-    }
-  }
-
-  type()
-}
-
-// Apply typing effect to hero title on page load
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const heroTitle = document.querySelector(".hero h1")
-    if (heroTitle) {
-      const originalText = heroTitle.textContent
-      typeWriter(heroTitle, originalText, 80)
-    }
-  }, 1500)
-})
 
 // Enhanced form validation with real-time feedback
 const formInputs = document.querySelectorAll("#contactForm input, #contactForm textarea, #contactForm select")
@@ -670,37 +601,6 @@ document.querySelectorAll(".video-card").forEach((card, index) => {
 
 // Enhanced accessibility features
 document.addEventListener("DOMContentLoaded", () => {
-  // Add skip to content link
-  const skipLink = document.createElement("a")
-  skipLink.href = "#main-content"
-  skipLink.textContent = "Skip to main content"
-  skipLink.className = "skip-link"
-  skipLink.style.cssText = `
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: var(--primary-color);
-    color: white;
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-    z-index: 10000;
-    transition: top 0.3s;
-  `
-  skipLink.addEventListener("focus", () => {
-    skipLink.style.top = "6px"
-  })
-  skipLink.addEventListener("blur", () => {
-    skipLink.style.top = "-40px"
-  })
-  document.body.insertBefore(skipLink, document.body.firstChild)
-
-  // Add main content landmark
-  const mainContent = document.querySelector(".hero") || document.querySelector("main")
-  if (mainContent) {
-    mainContent.id = "main-content"
-  }
-
   // Enhance form labels
   document.querySelectorAll("label").forEach((label) => {
     const input = document.getElementById(label.getAttribute("for"))
