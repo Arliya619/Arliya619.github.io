@@ -2139,6 +2139,8 @@ nav {
   }
 
   .name-with-gif {
+    position: relative;
+    left: 35px; /* ปรับค่านี้เพื่อเลื่อนไปทางขวามากขึ้นหรือน้อยลง */
   }
 
   .hero-text .highlight img {
