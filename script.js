@@ -347,7 +347,7 @@ if (contactToggle && contactMenu) {
     const isActive = contactMenu.classList.contains("active")
 
     // Animate toggle button
-    // contactToggle.style.transform = isActive ? "rotate(45deg)" : "rotate(0deg)"
+    contactToggle.style.transform = isActive ? "rotate(45deg)" : "rotate(0deg)"
 
     // Track floating contact menu event
     const trackEvent = window.trackEvent || (() => {})

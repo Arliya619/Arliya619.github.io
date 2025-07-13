@@ -1250,7 +1250,7 @@ nav {
 .floating-contact-toggle {
   width: 65px;
   height: 65px;
-  background: var(--gradient-primary);
+  background: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
