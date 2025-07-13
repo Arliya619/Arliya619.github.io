@@ -43,7 +43,7 @@ select option {
 }
 
 body {
-  font-family: "Inter", "Kanit", sans-serif;
+  font-family: "Kanit", Arial, sans-serif;
   background: var(--bg-primary);
   background-image: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
@@ -51,10 +51,6 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-}
-
-.thai-text {
-  font-family: "Kanit", sans-serif;
 }
 
 .container {
