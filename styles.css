@@ -387,6 +387,12 @@ nav {
   animation: pulse 2s infinite;
 }
 
+.waving-hand-gif {
+  height: 3.5rem;
+  vertical-align: bottom;
+  margin-left: 0.25rem;
+}
+
 .hero-text h2 {
   font-size: 2rem;
   color: var(--text-secondary);
@@ -653,7 +659,7 @@ nav {
 .service-card h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: var(--text-primary);
+  color: #3483ff;
   font-weight: 700;
 }
 
@@ -721,28 +727,27 @@ nav {
 }
 
 .video-info {
-  padding: 2rem;
-}
+        padding: 1.5rem;
+    }
 
-.video-info h4 {
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
+    .video-info h4 {
+        color: #3483ff;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
 
-.video-info p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
+    .video-info p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
 
-.video-tags {
-  display: flex;
-  gap: 0.8rem;
-  margin-top: 1.2rem;
-  flex-wrap: wrap;
-}
+    .video-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
 
 .video-tag {
   background: rgba(99, 102, 241, 0.15);
@@ -1253,7 +1258,6 @@ nav {
   cursor: pointer;
   box-shadow: var(--shadow-lg);
   transition: all 0.3s;
-  font-size: 1.6rem;
 }
 
 .floating-contact-toggle:hover {
@@ -1377,7 +1381,7 @@ nav {
 .scroll-top {
   position: fixed;
   bottom: 25px;
-  right: 25px;
+  right: 20px;
   width: 55px;
   height: 55px;
   background: var(--gradient-primary);
@@ -1630,6 +1634,10 @@ nav {
     line-height: 1.2;
   }
 
+  .waving-hand-gif {
+    height: 2rem;
+  }
+
   .hero-text h2 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
@@ -1865,6 +1873,10 @@ nav {
 
   .hero-text h1 {
     font-size: 1.6rem;
+  }
+
+  .waving-hand-gif {
+    height: 1.6rem;
   }
 
   .hero-text h2 {
@@ -2107,6 +2119,44 @@ nav {
     animation: none;
   }
 }
+
+/* แสดง GIF แค่ใน mobile mode */
+.mobile-only-gif {
+  height: 3rem;
+  width: 3rem;
+  display: none;
+  margin-left: 0.3rem;
+  position: relative;
+  top: 4px; /* ดันขึ้นให้ตรงแนวกับ baseline ของข้อความ */
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-only-gif {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    top: 15px; /* ยกเพิ่มขึ้นเฉพาะใน mobile เพราะใหญ่ขึ้น */
+  }
+
+  .name-with-gif {
+    position: relative;
+    left: 35px; /* ปรับค่านี้เพื่อเลื่อนไปทางขวามากขึ้นหรือน้อยลง */
+  }
+
+  .hero-text .highlight img {
+    display: none !important;
+  }
+
+  .desktop-only-greeting {
+    display: none;
+  }
+
+  .waving-hand-gif {
+    display: none;
+  }
+}
+
+
 
 /* Extra small devices optimization */
 @media (max-width: 360px) {
