@@ -4,16 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-<!-- Security Meta Tags -->
-<meta name="google-site-verification" content="RmihLrhA8_N6uu6nbndmh9qjOrFaMyVRWVqeCFpp90c" />
-
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta http-equiv="X-XSS-Protection" content="1; mode=block">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-
 <!-- Sitemap for Google -->
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://arliya619.github.io/sitemap.xml" />
 
@@ -57,7 +47,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 
 <!-- Google Fonts with Performance Optimization -->
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.gstatic.com/s/kanit..." as="font" type="font/woff2" crossorigin>
 
 <!-- AOS Animation Library -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -142,7 +132,14 @@
 <div class="video-modal" id="videoModal">
     <div class="video-modal-content">
         <button class="video-modal-close" id="closeVideoModal">&times;</button>
-        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+        <iframe
+            loading="lazy"
+            src="https://www.youtube.com/embed/fNFzfwLM72c?list=RDfNFzfwLM72c"
+            title="YouTube video playlist"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
     </div>
 </div>
 
@@ -251,7 +248,7 @@
       <!-- Video 1 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg');"
              data-video-id="dQw4w9WgXcQ"
              onclick="openVideoModal(this)">
         </div>
@@ -272,7 +269,7 @@
       <!-- Video 2 -->
 <div class="video-card fade-in">
   <div class="video-thumbnail"
-       style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
+       style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/mqdefault.jpg');"
        data-video-id="LnYnVtMKY8Q"
        onclick="openVideoModal(this)">
   </div>
@@ -294,7 +291,7 @@
 <!-- Video 3 -->
       <div class="video-card fade-in">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/Sq4l1AdgiU0/maxresdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/Sq4l1AdgiU0/mqdefault.jpg');"
              data-video-id="Sq4l1AdgiU0"
              onclick="openVideoModal(this)">
         </div>
@@ -330,7 +327,7 @@
       <!-- วิดีโอที่ 1 -->
       <div class="video-card">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg');"
              data-video-id="dQw4w9WgXcQ"
              onclick="openVideoModal(this)">
         </div>
@@ -343,7 +340,7 @@
       <!-- วิดีโอที่ 2 -->
       <div class="video-card">
         <div class="video-thumbnail"
-             style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/maxresdefault.jpg');"
+             style="background-image: url('https://img.youtube.com/vi/LnYnVtMKY8Q/mqdefault.jpg');"
              data-video-id="LnYnVtMKY8Q"
              onclick="openVideoModal(this)">
         </div>

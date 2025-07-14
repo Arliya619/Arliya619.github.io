@@ -1,53 +1,62 @@
-// Enhanced Loading screen with progress
-let loadProgress = 0
-const progressFill = document.getElementById("progressFill")
-const loaderText = document.querySelector(".loader-text")
+// Enhanced Loading screen with animated progress
+const loader = document.getElementById("loader");
+const progressFill = document.getElementById("progressFill");
+const loaderText = document.querySelector(".loader-text");
+const loadingMessages = ["กำลังโหลดพอร์ตโฟลิโอ...", "กำลังเตรียมผลงาน...", "เกือบเสร็จแล้ว...", "พร้อมแล้ว!"];
 
-const loadingMessages = ["กำลังโหลดพอร์ตโฟลิโอ...", "กำลังเตรียมผลงาน...", "เกือบเสร็จแล้ว...", "พร้อมแล้ว!"]
+let progress = 0;
+let simulationInterval;
 
-function updateProgress() {
-  loadProgress += Math.random() * 30
-  if (loadProgress > 100) loadProgress = 100
+/**
+ * Simulates the loading progress bar moving from 0% to 90%.
+ * This provides visual feedback to the user while assets are loading.
+ */
+function simulateProgress() {
+    simulationInterval = setInterval(() => {
+        // Increase progress by a small random amount, slowing down as it approaches 90%
+        progress += Math.random() * 5;
+        if (progress > 90) {
+            progress = 90; // Cap at 90% until the page is fully loaded
+            clearInterval(simulationInterval);
+        }
+        
+        if (progressFill) {
+            progressFill.style.width = progress + "%";
+        }
 
-  if (progressFill) {
-    progressFill.style.width = loadProgress + "%"
-  }
-
-  const messageIndex = Math.floor((loadProgress / 100) * (loadingMessages.length - 1))
-  if (loaderText) {
-    loaderText.textContent = loadingMessages[messageIndex]
-  }
-
-  if (loadProgress < 100) {
-    setTimeout(updateProgress, 200 + Math.random() * 30)
-  }
+        const messageIndex = Math.floor((progress / 100) * (loadingMessages.length - 1));
+        if (loaderText && loadingMessages[messageIndex]) {
+            loaderText.textContent = loadingMessages[messageIndex];
+        }
+    }, 200); // Update every 200ms
 }
 
-// Start progress simulation
-updateProgress()
+/**
+ * Completes the loading animation and hides the loading screen.
+ * This is triggered by the window's 'load' event.
+ */
+function completeLoading() {
+    clearInterval(simulationInterval); // Stop the simulation
 
-// Hide loader after page loads
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    loadProgress = 100
-    if (progressFill) {
-      progressFill.style.width = "100%"
-    }
-    if (loaderText) {
-      loaderText.textContent = loadingMessages[3]
-    }
+    // Animate to 100%
+    if (progressFill) progressFill.style.width = "100%";
+    if (loaderText) loaderText.textContent = loadingMessages[loadingMessages.length - 1]; // "พร้อมแล้ว!"
 
+    // Wait for the animation to finish, then hide the loader
     setTimeout(() => {
-      const loader = document.getElementById("loader")
-      if (loader) {
-        loader.classList.add("hidden")
-      }
-      // Track page load event
-      const trackEvent = window.trackEvent || (() => {})
-      trackEvent("page_load", "Performance", "Load Complete", Math.round(performance.now()))
-    }, 500)
-  }, 800)
-})
+        if (loader) loader.classList.add("hidden");
+        const trackEvent = window.trackEvent || (() => {});
+        trackEvent("page_load", "Performance", "Load Complete", Math.round(performance.now()));
+    }, 500); // 0.5s delay for a smooth transition
+}
+
+// Start the simulation as soon as the script runs
+if (loader) {
+    simulateProgress();
+}
+
+// When the page is fully loaded, complete the animation
+window.addEventListener("load", completeLoading);
 
 // Initialize AOS Animation Library
 const AOS = window.AOS || {}
@@ -629,11 +638,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Track page view
   const trackEvent = window.trackEvent || (() => {})
   trackEvent("page_view", "Navigation", window.location.pathname, 1)
-})
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const loader = document.getElementById("loader")
-    if (loader) loader.classList.add("hidden")
-  }, 3000)  // บังคับซ่อน loader ใน 3 วิ
 })
