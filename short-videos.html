@@ -6,10 +6,15 @@
   
 <!-- Security Meta Tags -->
 <meta name="google-site-verification" content="lQsdFmhv4VQC3Fy1-UxIpgtMtcVdDWST0moAGByS0tM" />
+
+<!-- Security Meta Tags -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
 <!-- Enhanced SEO Meta Tags -->
 <meta name="description" content="Arliya - ผลงานวิดีโอคลิปสั้น รวมผลงาน TikTok, Instagram Reels, YouTube Shorts และคอนเทนต์โซเชียลมีเดีย">
@@ -55,11 +60,11 @@
             <li><a href="photo-gallery.html" class="thai-text" data-en="Photos" data-th="รูปภาพ">รูปภาพ</a></li>
             <li><a href="index.html#contact" class="thai-text" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a></li>
         </ul>
-        <button class="mobile-menu" id="mobileMenu" aria-label="Mobile Menu" aria-expanded="false" aria-controls="navLinks">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+        <div class="mobile-menu" id="mobileMenu" aria-label="Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 </header>
 

@@ -6,10 +6,15 @@
   
 <!-- Security Meta Tags -->
 <meta name="google-site-verification" content="lQsdFmhv4VQC3Fy1-UxIpgtMtcVdDWST0moAGByS0tM" />
+
+<!-- Security Meta Tags -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://api.telegram.org https://www.youtube.com https://youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.telegram.org https://wa.me https://formspree.io; frame-src https://www.youtube.com https://youtube.com; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
 <!-- Sitemap for Google -->
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://arliya619.github.io/sitemap.xml" />
@@ -29,7 +34,7 @@
 <meta property="og:description" content="บริการตัดต่อวิดีโอ ประสบการณ์ 3+ ปี เชี่ยวชาญโฆษณา สารคดี และคอนเทนต์โซเชียลมีเดีย พร้อมบริการ Motion Graphics และ Color Grading">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arliya619.github.io/">
-<meta property="og:image" content="https://imgstore.org/a/6d0w1zfg9tj6">
+<meta property="og:image" content="https://imgstore.org/a/6cuucl5km91x">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Arliya">
@@ -41,7 +46,7 @@
 <meta name="twitter:creator" content="@Arliya Phounsavath">
 <meta name="twitter:title" content="Arliya Phounsavath - นักตัดต่อวิดีโอ">
 <meta name="twitter:description" content="บริการตัดต่อวิดีโอ ประสบการณ์ 3+ ปี เชี่ยวชาญโฆษณา สารคดี และคอนเทนต์โซเชียลมีเดีย พร้อมบริการ Motion Graphics และ Color Grading">
-<meta name="twitter:image" content="https://imgstore.org/a/6d0w1zfg9tj6">
+<meta name="twitter:image" content="https://imgstore.org/a/6cuucl5km91x">
 
 <!-- Favicon and App Icons -->
 <link rel="icon" type="image/x-icon" href="https://imgstore.org/a/6cwmwb5hpf5j">
@@ -54,7 +59,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 
 <!-- Google Fonts with Performance Optimization -->
-<link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- AOS Animation Library -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -124,6 +129,16 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Enhanced Loading Screen -->
+<div class="loader" id="loader">
+    <div class="loader-content">
+        <img src="https://imgstore.org/a/6d0kjeulg2ww" alt="Loading Animation" style="width: 250px; margin-bottom: 10px;">
+        <p class="loader-text thai-text">กรุณารอสักครู่...</p>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+</div>
 
 <!-- Video Modal -->
 <div class="video-modal" id="videoModal">
@@ -152,11 +167,11 @@
             <li><a href="photo-gallery.html" class="thai-text" data-en="Photos" data-th="รูปภาพ">รูปภาพ</a></li>
             <li><a href="#contact" class="thai-text" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a></li>
         </ul>
-        <button class="mobile-menu" id="mobileMenu" aria-label="Mobile Menu" aria-expanded="false" aria-controls="navLinks">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+        <div class="mobile-menu" id="mobileMenu" aria-label="Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 </header>
 
@@ -209,17 +224,17 @@
         <p class="section-subtitle thai-text fade-in" data-en="Comprehensive video editing and content production services" data-th="บริการครบวงจรด้านการตัดต่อวิดีโอและการผลิตคอนเทนต์ระดับคุณภาพ">บริการครบวงจรด้านการตัดต่อวิดีโอและการผลิตคอนเทนต์ระดับคุณภาพ</p>
         <div class="services-grid">
             <div class="service-card fade-in">
-                <div class="service-icon"><img src="https://imgstore.org/a/6d0w5kcdazy2" alt="Video Editing Icon" style="height: 70px;"></div>
+                <div class="service-icon"><img src="https://imgstore.org/a/6cz8ivm5i4qv" alt="Video Editing Icon" style="height: 70px;"></div>
                 <h3 class="thai-text" data-en="Video Editing" data-th="ตัดต่อวิดีโอ">ตัดต่อวิดีโอ</h3>
                 <p class="thai-text" data-en="Professional video editing services for commercials, documentaries, and social media content with quality." data-th="บริการตัดต่อวิดีโอมืออาชีพสำหรับโฆษณา สารคดี และคอนเทนต์โซเชียลมีเดียระดับคุณภาพ">บริการตัดต่อวิดีโอมืออาชีพสำหรับโฆษณา สารคดี และคอนเทนต์โซเชียลมีเดียระดับคุณภาพ</p>
             </div>
             <div class="service-card fade-in">
-                <div class="service-icon"><img src="https://imgstore.org/a/6d0vzuny7292" alt="Motion Graphics" style="height: 55px;"></div>
+                <div class="service-icon"><img src="https://imgstore.org/a/6cz91vgfom5d" alt="Motion Graphics" style="height: 55px;"></div>
                 <h3 class="thai-text" data-en="Motion Graphics" data-th="Motion Graphics">Motion Graphics</h3>
                 <p class="thai-text" data-en="Creating beautiful Motion Graphics and Animation to enhance brand identity and increase engagement." data-th="สร้างสรรค์ Motion Graphics และ Animation เพื่อสร้างเอกลักษณ์ของแบรนด์และเพิ่มความน่าสนใจ">สร้างสรรค์ Motion Graphics และ Animation เพื่อสร้างเอกลักษณ์ของแบรนด์และเพิ่มความน่าสนใจ</p>
             </div>
             <div class="service-card fade-in">
-                <div class="service-icon"><img src="https://imgstore.org/a/6d0w65mz2cz2" alt="Color Grading" style="height: 55px;"></div>
+                <div class="service-icon"><img src="https://imgstore.org/a/6cz96hhxm6ol" alt="Color Grading" style="height: 55px;"></div>
                 <h3 class="thai-text" data-en="Color Grading" data-th="Color Grading">Color Grading</h3>
                 <p class="thai-text" data-en="Professionally adjust color and lighting to give your video a beautiful, cohesive look that matches its specific style." data-th="ปรับแต่งสีและแสงแบบมืออาชีพ เพื่อให้วิดีโอของคุณมีลุคที่สวยงามและมีความเข้ากันกับแนววิดิโอสไตล์นั้นๆ">ปรับแต่งสีและแสงแบบมืออาชีพ เพื่อให้วิดีโอของคุณมีลุคที่สวยงามและมีความเข้ากันกับแนววิดิโอสไตล์นั้นๆ</p>
             </div>
@@ -243,7 +258,7 @@
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
-          <h3 class="thai-text" data-en="Product Advertisement - Computer Brand" data-th="โฆษณาผลิตภัณฑ์ - แบรนด์คอมพิวเตอร์">โฆษณาผลิตภัณฑ์ - แบรนด์คอมพิวเตอร์</h3>
+          <h4 class="thai-text" data-en="Product Advertisement - Computer Brand" data-th="โฆษณาผลิตภัณฑ์ - แบรนด์คอมพิวเตอร์">โฆษณาผลิตภัณฑ์ - แบรนด์คอมพิวเตอร์</h4>
           <p class="thai-text" data-en="Advertisement video for a leading computer brand, using Mockup and Motion Graphics techniques to create interest." data-th="วิดีโอโฆษณาสำหรับแบรนด์คอมพิวเตอร์ชั้นนำ ใช้เทคนิค Mockup และ Motion Graphics เพื่อสร้างความน่าสนใจ">วิดีโอโฆษณาสำหรับแบรนด์คอมพิวเตอร์ชั้นนำ ใช้เทคนิค Mockup และ Motion Graphics เพื่อสร้างความน่าสนใจ</p>
           <div class="video-tags">
             <span class="video-tag">Commercial</span>
@@ -265,7 +280,7 @@
   </div>
 
   <div class="video-info">
-    <h3 class="thai-text" data-en="Travel Style - Travel Vlog" data-th="แนวท่องเที่ยว - Vlog ท่องเที่ยว">แนวท่องเที่ยว - Vlog ท่องเที่ยว</h3>
+    <h4 class="thai-text" data-en="Travel Style - Travel Vlog" data-th="แนวท่องเที่ยว - Vlog ท่องเที่ยว">แนวท่องเที่ยว - Vlog ท่องเที่ยว</h4>
     <p class="thai-text" data-en="Travel vlog introducing tourist attractions, using Motion Graphics / Map Animation editing techniques." data-th="Vlog เที่ยวแนะนำสถานที่ท่องเที่ยว ใช้เทคนิคการตัดต่อแบบ Motion Graphics / Map Animation">Vlog เที่ยวแนะนำสถานที่ท่องเที่ยว ใช้เทคนิคการตัดต่อแบบ Motion Graphics / Map Animation</p>
     <div class="video-tags">
       <span class="video-tag">Vlog</span>
@@ -286,7 +301,7 @@
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
-          <h3 class="thai-text" data-en="YouTube Style - Fast-paced Editing" data-th="Youtub สไตล์ - ตัดต่อแบบเร็วๆสไตล์ Youtub">Youtub สไตล์ - ตัดต่อแบบเร็วๆสไตล์ Youtub</h3>
+          <h4 class="thai-text" data-en="YouTube Style - Fast-paced Editing" data-th="Youtub สไตล์ - ตัดต่อแบบเร็วๆสไตล์ Youtub">Youtub สไตล์ - ตัดต่อแบบเร็วๆสไตล์ Youtub</h4>
           <p class="thai-text" data-en="A video style that focuses on fast editing and heavy use of effects." data-th="เป็นสไตล์วิดิโอที่เน้นการตัดต่อแบบเร็ว และใส่ Effect เยอะๆเป็นหลัก">เป็นสไตล์วิดิโอที่เน้นการตัดต่อแบบเร็ว และใส่ Effect เยอะๆเป็นหลัก</p>
           <div class="video-tags">
             <span class="video-tag">YouTube</span>
@@ -322,7 +337,7 @@
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
-          <h3 class="thai-text">ตัดต่อวิดีโอโฆษณา</h3>
+          <h4 class="thai-text">ตัดต่อวิดีโอโฆษณา</h4>
           <p class="thai-text">การตัดต่อโฆษณามืออาชีพพร้อม motion graphics</p>
         </div>
       </div>
@@ -335,7 +350,7 @@
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
-          <h3 class="thai-text">โชว์เคส Color Grading</h3>
+          <h4 class="thai-text">โชว์เคส Color Grading</h4>
           <p class="thai-text">การเปลี่ยนแปลงก่อนและหลัง color grading</p>
         </div>
       </div>
@@ -348,7 +363,7 @@
              onclick="openVideoModal(this)">
         </div>
         <div class="video-info">
-          <h3 class="thai-text">ตัดต่อมิวสิควิดีโอ</h3>
+          <h4 class="thai-text">ตัดต่อมิวสิควิดีโอ</h4>
           <p class="thai-text">การตัดต่อมิวสิควิดีโอสร้างสรรค์พร้อมเอฟเฟค</p>
         </div>
       </div>
@@ -373,7 +388,7 @@
                     <div class="thumbnail-overlay">HD</div>
                 </div>
                 <div class="thumbnail-info">
-                    <h3 class="thai-text" data-en="Thumbnail for Tech Review Channel" data-th="Thumbnail สำหรับช่อง Tech Review">Thumbnail สำหรับช่อง Tech Review</h3>
+                    <h4 class="thai-text" data-en="Thumbnail for Tech Review Channel" data-th="Thumbnail สำหรับช่อง Tech Review">Thumbnail สำหรับช่อง Tech Review</h4>
                     <div class="thumbnail-stats">
                         <span class="thai-text">CTR: 12.5%</span>
                         <span class="thai-text">Views: 250K+</span>
@@ -387,7 +402,7 @@
                     <div class="thumbnail-overlay">4K</div>
                 </div>
                 <div class="thumbnail-info">
-                    <h3 class="thai-text" data-en="Thumbnail for Cooking Channel" data-th="Thumbnail สำหรับช่องทำอาหาร">Thumbnail สำหรับช่องทำอาหาร</h3>
+                    <h4 class="thai-text" data-en="Thumbnail for Cooking Channel" data-th="Thumbnail สำหรับช่องทำอาหาร">Thumbnail สำหรับช่องทำอาหาร</h4>
                     <div class="thumbnail-stats">
                         <span class="thai-text">CTR: 15.2%</span>
                         <span class="thai-text">Views: 180K+</span>
@@ -401,7 +416,7 @@
                     <div class="thumbnail-overlay">LIVE</div>
                 </div>
                 <div class="thumbnail-info">
-                    <h3 class="thai-text" data-en="Thumbnail for Gaming Channel" data-th="Thumbnail สำหรับช่องเกมมิ่ง">Thumbnail สำหรับช่องเกมมิ่ง</h3>
+                    <h4 class="thai-text" data-en="Thumbnail for Gaming Channel" data-th="Thumbnail สำหรับช่องเกมมิ่ง">Thumbnail สำหรับช่องเกมมิ่ง</h4>
                     <div class="thumbnail-stats">
                         <span class="thai-text">CTR: 18.7%</span>
                         <span class="thai-text">Views: 320K+</span>
@@ -415,7 +430,7 @@
                     <div class="thumbnail-overlay">NEW</div>
                 </div>
                 <div class="thumbnail-info">
-                    <h3 class="thai-text" data-en="Thumbnail for Lifestyle Channel" data-th="Thumbnail สำหรับช่องไลฟ์สไตล์">Thumbnail สำหรับช่องไลฟ์สไตล์</h3>
+                    <h4 class="thai-text" data-en="Thumbnail for Lifestyle Channel" data-th="Thumbnail สำหรับช่องไลฟ์สไตล์">Thumbnail สำหรับช่องไลฟ์สไตล์</h4>
                     <div class="thumbnail-stats">
                         <span class="thai-text">CTR: 14.3%</span>
                         <span class="thai-text">Views: 195K+</span>
@@ -429,7 +444,7 @@
                     <div class="thumbnail-overlay">EDU</div>
                 </div>
                 <div class="thumbnail-info">
-                    <h3 class="thai-text" data-en="Thumbnail for Education Channel" data-th="Thumbnail สำหรับช่องการศึกษา">Thumbnail สำหรับช่องการศึกษา</h3>
+                    <h4 class="thai-text" data-en="Thumbnail for Education Channel" data-th="Thumbnail สำหรับช่องการศึกษา">Thumbnail สำหรับช่องการศึกษา</h4>
                     <div class="thumbnail-stats">
                         <span class="thai-text">CTR: 11.8%</span>
                         <span class="thai-text">Views: 145K+</span>
@@ -443,7 +458,7 @@
                     <div class="thumbnail-overlay">VLOG</div>
                 </div>
                 <div class="thumbnail-info">
-                    <h3 class="thai-text" data-en="Thumbnail for Travel Channel" data-th="Thumbnail สำหรับช่องท่องเที่ยว">Thumbnail สำหรับช่องท่องเที่ยว</h3>
+                    <h4 class="thai-text" data-en="Thumbnail for Travel Channel" data-th="Thumbnail สำหรับช่องท่องเที่ยว">Thumbnail สำหรับช่องท่องเที่ยว</h4>
                     <div class="thumbnail-stats">
                         <span class="thai-text">CTR: 16.9%</span>
                         <span class="thai-text">Views: 280K+</span>
@@ -470,7 +485,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">ก</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Kittichan Janphen" data-th="คุณกิตติ์ จันทร์เพ็ญ">คุณกิตติ์ จันทร์เพ็ญ</h3>
+                            <h4 class="thai-text" data-en="Kittichan Janphen" data-th="คุณกิตติ์ จันทร์เพ็ญ">คุณกิตติ์ จันทร์เพ็ญ</h4>
                             <p class="thai-text" data-en="Marketing Director" data-th="ผู้อำนวยการฝ่ายการตลาด">ผู้อำนวยการฝ่ายการตลาด</p>
                         </div>
                     </div>
@@ -482,7 +497,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">ส</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Suda Wongyai" data-th="คุณสุดา วงศ์ใหญ่">คุณสุดา วงศ์ใหญ่</h3>
+                            <h4 class="thai-text" data-en="Suda Wongyai" data-th="คุณสุดา วงศ์ใหญ่">คุณสุดา วงศ์ใหญ่</h4>
                             <p class="thai-text" data-en="Content Creator" data-th="Content Creator">Content Creator</p>
                         </div>
                     </div>
@@ -494,7 +509,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">ม</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Mana Srisuk" data-th="คุณมานะ ศรีสุข">คุณมานะ ศรีสุข</h3>
+                            <h4 class="thai-text" data-en="Mana Srisuk" data-th="คุณมานะ ศรีสุข">คุณมานะ ศรีสุข</h4>
                             <p class="thai-text" data-en="Film Producer" data-th="ผู้ผลิตภาพยนตร์">ผู้ผลิตภาพยนตร์</p>
                         </div>
                     </div>
@@ -506,7 +521,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">ล</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Lilly Thanawat" data-th="คุณลิลลี่ ธนาวัฒน์">คุณลิลลี่ ธนาวัฒน์</h3>
+                            <h4 class="thai-text" data-en="Lilly Thanawat" data-th="คุณลิลลี่ ธนาวัฒน์">คุณลิลลี่ ธนาวัฒน์</h4>
                             <p class="thai-text" data-en="Event Coordinator" data-th="Event Coordinator">Event Coordinator</p>
                         </div>
                     </div>
@@ -518,7 +533,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">อ</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Anucha Rattanaphan" data-th="คุณอนุชา รัตนพันธ์">คุณอนุชา รัตนพันธ์</h3>
+                            <h4 class="thai-text" data-en="Anucha Rattanaphan" data-th="คุณอนุชา รัตนพันธ์">คุณอนุชา รัตนพันธ์</h4>
                             <p class="thai-text" data-en="YouTuber" data-th="YouTuber">YouTuber</p>
                         </div>
                     </div>
@@ -531,7 +546,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">ก</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Kittichan Janphen" data-th="คุณกิตติ์ จันทร์เพ็ญ">คุณกิตติ์ จันทร์เพ็ญ</h3>
+                            <h4 class="thai-text" data-en="Kittichan Janphen" data-th="คุณกิตติ์ จันทร์เพ็ญ">คุณกิตติ์ จันทร์เพ็ญ</h4>
                             <p class="thai-text" data-en="Marketing Director" data-th="ผู้อำนวยการฝ่ายการตลาด">ผู้อำนวยการฝ่ายการตลาด</p>
                         </div>
                     </div>
@@ -543,7 +558,7 @@
                     <div class="review-header">
                         <div class="reviewer-avatar">ส</div>
                         <div class="reviewer-info">
-                            <h3 class="thai-text" data-en="Suda Wongyai" data-th="คุณสุดา วงศ์ใหญ่">คุณสุดา วงศ์ใหญ่</h3>
+                            <h4 class="thai-text" data-en="Suda Wongyai" data-th="คุณสุดา วงศ์ใหญ่">คุณสุดา วงศ์ใหญ่</h4>
                             <p class="thai-text" data-en="Content Creator" data-th="Content Creator">Content Creator</p>
                         </div>
                     </div>
@@ -657,7 +672,7 @@
                 <div class="social-icon facebook">
                     <img src="https://imgstore.org/a/6cuxq4d94yzl " alt="Facebook Icon" style="width: 75px; height: 75px;">
                 </div>
-                <h3>Facebook</h3>
+                <h4>Facebook</h4>
                 <p class="thai-text" data-en="Follow my latest updates" data-th="ติดตามรายระเอียดผลงานอื่นๆ">ติดตามรายระเอียดผลงานอื่นๆ</p>
             </a>
             
@@ -665,7 +680,7 @@
                 <div class="social-icon instagram">
                     <img src="https://imgstore.org/a/6cuy21rqm3r6" alt="Instagram Icon" style="width: 75px; height: 75px;">
                 </div>
-                <h3>Instagram</h3>
+                <h4>Instagram</h4>
                 <p class="thai-text" data-en="Short video" data-th="ผลงานวิดิโอสั้น">ผลงานวิดิโอสั้น</p>
             </a>
 
@@ -673,7 +688,7 @@
                 <div class="social-icon tiktok">
                     <img src="https://imgstore.org/a/6cuy4rft4b7m" alt="TikTok Icon" style="width: 75px; height: 75px;">
                 </div>
-                <h3>TikTok</h3>
+                <h4>TikTok</h4>
                 <p class="thai-text" data-en="Short video" data-th="ผลงานวิดิโอสั้น">ผลงานวิดิโอสั้น</p>
             </a>
 
@@ -681,7 +696,7 @@
                 <div class="social-icon youtube">
                     <img src="https://imgstore.org/a/6cuy5wesrwfk" alt="YouTube Icon" style="width: 75px; height: 75px;">
                 </div>
-                <h3>YouTube</h3>
+                <h4>YouTube</h4>
                 <p class="thai-text" data-en="Long term video" data-th="วิดีโอคลิปยาว">วิดีโอคลิปยาว</p>
             </a>
         </div>
