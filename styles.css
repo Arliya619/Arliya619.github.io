@@ -84,17 +84,6 @@ body {
   text-align: center;
 }
 
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 4px solid rgba(99, 102, 241, 0.2);
-  border-top: 4px solid var(--primary-color);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 20px;
-  box-shadow: var(--shadow-glow);
-}
-
 .loader-text {
   font-size: 1.1rem;
   color: var(--text-secondary);
@@ -116,15 +105,6 @@ body {
   border-radius: 2px;
   width: 0%;
   transition: width 0.3s ease;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes pulse {
@@ -2197,4 +2177,3 @@ nav {
     right: 10px;
   }
 }
-
