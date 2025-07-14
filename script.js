@@ -445,20 +445,6 @@ window.addEventListener("error", (e) => {
   trackEvent("javascript_error", "Error", e.message, 1)
 })
 
-// Service Worker registration for PWA capabilities
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then((registration) => {
-        console.log("SW registered: ", registration)
-      })
-      .catch((registrationError) => {
-        console.log("SW registration failed: ", registrationError)
-      })
-  })
-}
-
 // Enhanced form validation with real-time feedback
 const formInputs = document.querySelectorAll("#contactForm input, #contactForm textarea, #contactForm select")
 formInputs.forEach((input) => {
@@ -643,4 +629,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Track page view
   const trackEvent = window.trackEvent || (() => {})
   trackEvent("page_view", "Navigation", window.location.pathname, 1)
+})
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const loader = document.getElementById("loader")
+    if (loader) loader.classList.add("hidden")
+  }, 3000)  // บังคับซ่อน loader ใน 3 วิ
 })
