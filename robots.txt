@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://stellular-clafoutis-f36383.netlify.app/sitemap.xml
