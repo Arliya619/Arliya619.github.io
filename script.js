@@ -1,3 +1,53 @@
+// Enhanced Loading screen with progress
+let loadProgress = 0
+const progressFill = document.getElementById("progressFill")
+const loaderText = document.querySelector(".loader-text")
+
+const loadingMessages = ["กำลังโหลดพอร์ตโฟลิโอ...", "กำลังเตรียมผลงาน...", "เกือบเสร็จแล้ว...", "พร้อมแล้ว!"]
+
+function updateProgress() {
+  loadProgress += Math.random() * 30
+  if (loadProgress > 100) loadProgress = 100
+
+  if (progressFill) {
+    progressFill.style.width = loadProgress + "%"
+  }
+
+  const messageIndex = Math.floor((loadProgress / 100) * (loadingMessages.length - 1))
+  if (loaderText) {
+    loaderText.textContent = loadingMessages[messageIndex]
+  }
+
+  if (loadProgress < 100) {
+    setTimeout(updateProgress, 200 + Math.random() * 30)
+  }
+}
+
+// Start progress simulation
+updateProgress()
+
+// Hide loader after page loads
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    loadProgress = 100
+    if (progressFill) {
+      progressFill.style.width = "100%"
+    }
+    if (loaderText) {
+      loaderText.textContent = loadingMessages[3]
+    }
+
+    setTimeout(() => {
+      const loader = document.getElementById("loader")
+      if (loader) {
+        loader.classList.add("hidden")
+      }
+      // Track page load event
+      const trackEvent = window.trackEvent || (() => {})
+      trackEvent("page_load", "Performance", "Load Complete", Math.round(performance.now()))
+    }, 500)
+  }, 800)
+})
 
 // Initialize AOS Animation Library
 const AOS = window.AOS || {}
@@ -394,6 +444,20 @@ window.addEventListener("error", (e) => {
   const trackEvent = window.trackEvent || (() => {})
   trackEvent("javascript_error", "Error", e.message, 1)
 })
+
+// Service Worker registration for PWA capabilities
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((registration) => {
+        console.log("SW registered: ", registration)
+      })
+      .catch((registrationError) => {
+        console.log("SW registration failed: ", registrationError)
+      })
+  })
+}
 
 // Enhanced form validation with real-time feedback
 const formInputs = document.querySelectorAll("#contactForm input, #contactForm textarea, #contactForm select")
