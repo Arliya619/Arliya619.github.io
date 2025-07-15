@@ -2141,7 +2141,7 @@ nav {
 /* Extra small devices optimization */
 @media (max-width: 360px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.8rem;
   }
 
   .hero-text h1 {
