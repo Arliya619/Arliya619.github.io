@@ -643,4 +643,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Track page view
   const trackEvent = window.trackEvent || (() => {})
   trackEvent("page_view", "Navigation", window.location.pathname, 1)
+
 })
