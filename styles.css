@@ -1839,6 +1839,35 @@ nav {
     font-size: 0.75rem;
     padding: 4px 8px;
   }
+
+  /* YouTube Thumbnails Carousel on Mobile */
+  .youtube-thumbnails .thumbnail-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+    
+    /* Make it edge-to-edge and add internal padding */
+    margin-left: 0rem;
+    margin-right: -1rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem; /* For spacing below the scrollbar area */
+
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .youtube-thumbnails .thumbnail-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .youtube-thumbnails .thumbnail-grid .thumbnail-card {
+    flex: 0 0 85%; /* Let one card take most of the screen */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2175,5 +2204,79 @@ nav {
   .floating-contacts {
     bottom: 95px;
     right: 10px;
+  }
+}
+
+/* Reels-style Carousel for Short Videos on Mobile */
+@media (max-width: 768px) {
+  .short-video .reels-view-mobile {
+    /* Override grid layout */
+    display: block; 
+    
+    /* Container styles */
+    height: 75vh; /* A bit less than full screen height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    border-radius: 20px;
+    background-color: var(--bg-secondary);
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .short-video .reels-view-mobile::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .short-video .reels-view-mobile .video-card {
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    border-radius: 0; /* Override default card radius */
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align info to bottom */
+    padding: 0; /* Remove padding from card itself */
+  }
+
+  .short-video .reels-view-mobile .video-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 20px; /* Match container radius */
+  }
+
+  /* Add a gradient overlay for text readability */
+  .short-video .reels-view-mobile .video-thumbnail::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 50%);
+    border-radius: 20px;
+    z-index: 1;
+  }
+  
+  /* Keep the play button centered and above the gradient*/
+  .short-video .reels-view-mobile .video-thumbnail::before {
+      z-index: 2;
+  }
+
+  .short-video .reels-view-mobile .video-info {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    color: var(--text-primary);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .short-video .reels-view-mobile .video-info h3 {
+    color: inherit; /* Inherit color from .video-info */
   }
 }
