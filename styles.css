@@ -1849,9 +1849,9 @@ nav {
     gap: 1.5rem;
     
     /* Make it edge-to-edge and add internal padding */
-    margin-left: 0rem;
+    margin-left: -1rem;
     margin-right: -1rem;
-    padding-left: 0rem;
+    padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem; /* For spacing below the scrollbar area */
 
