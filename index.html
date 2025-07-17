@@ -720,5 +720,75 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="script.js"></script>
 
+<!-- Script for Looping Reels -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const initReelsLoop = () => {
+        const reelsContainer = document.querySelector('.short-video .reels-view-mobile');
+        
+        // Exit if container not found or already initialized
+        if (!reelsContainer || reelsContainer.dataset.loopInitialized) {
+            return;
+        }
+
+        const items = Array.from(reelsContainer.children);
+        if (items.length <= 1) {
+            return; // No need to loop for 1 or 0 items
+        }
+
+        reelsContainer.dataset.loopInitialized = 'true';
+
+        // Clone first and last items for the loop effect
+        const firstClone = items[0].cloneNode(true);
+        const lastClone = items[items.length - 1].cloneNode(true);
+
+        reelsContainer.appendChild(firstClone);
+        reelsContainer.prepend(lastClone);
+
+        // Let the browser render the new clones before we scroll
+        requestAnimationFrame(() => {
+            reelsContainer.scrollTop = reelsContainer.children[1].offsetTop;
+
+            let scrollTimeout;
+            reelsContainer.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+
+                scrollTimeout = setTimeout(() => {
+                    const itemHeight = reelsContainer.clientHeight;
+                    const scrollHeight = reelsContainer.scrollHeight;
+                    const currentScrollTop = reelsContainer.scrollTop;
+                    const buffer = 5; // A small buffer for floating point inaccuracies
+
+                    if (currentScrollTop >= scrollHeight - itemHeight - buffer) {
+                        reelsContainer.scrollTo({ top: itemHeight, behavior: 'instant' });
+                    } else if (currentScrollTop <= buffer) {
+                        reelsContainer.scrollTo({ top: scrollHeight - (2 * itemHeight), behavior: 'instant' });
+                    }
+                }, 100);
+            });            
+
+            // Auto-scroll functionality
+            let autoScrollInterval = setInterval(() => {
+                reelsContainer.scrollBy({ top: reelsContainer.clientHeight, behavior: 'smooth' });
+            }, 3000); // Adjust time interval as needed
+
+            // Pause auto-scroll on user interaction
+            reelsContainer.addEventListener('mousedown', () => clearInterval(autoScrollInterval));
+            reelsContainer.addEventListener('mouseup', () => {
+                autoScrollInterval = setInterval(() => reelsContainer.scrollBy({ top: reelsContainer.clientHeight, behavior: 'smooth' }), 3000);
+            });
+        
+        });
+    };
+
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    if (mediaQuery.matches) {
+        initReelsLoop();
+    }
+    // Listen for changes in screen size to enable/disable the loop
+    mediaQuery.addEventListener('change', (e) => e.matches ? initReelsLoop() : null);
+});
+</script>
+
 </body>
 </html>
