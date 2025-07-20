@@ -663,3 +663,4 @@ document.addEventListener("DOMContentLoaded", () => {
   trackEvent("page_view", "Navigation", window.location.pathname, 1)
 
 })
+

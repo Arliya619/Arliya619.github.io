@@ -747,19 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 100);
             });            
-
-            // Auto-scroll functionality
-            let autoScrollInterval = setInterval(() => {
-                reelsContainer.scrollBy({ top: reelsContainer.clientHeight, behavior: 'smooth' });
-            }, 3000); // Adjust time interval as needed
-
-            // Pause auto-scroll on user interaction
-            reelsContainer.addEventListener('mousedown', () => clearInterval(autoScrollInterval));
-            reelsContainer.addEventListener('mouseup', () => {
-                autoScrollInterval = setInterval(() => reelsContainer.scrollBy({ top: reelsContainer.clientHeight, behavior: 'smooth' }), 3000);
-            });
-        
-        });
+        });        
     };
 
     const mediaQuery = window.matchMedia("(max-width: 768px)");
