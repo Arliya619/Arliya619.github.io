@@ -188,28 +188,46 @@ function openVideoModal(element) {
   const videoId = element.getAttribute("data-video-id")
   const modal = document.getElementById("videoModal")
   const iframe = document.getElementById("videoFrame")
+  const modalContent = document.querySelector(".video-modal-content")
 
   if (videoId && modal && iframe) {
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`
     modal.classList.add("active")
     document.body.style.overflow = "hidden"
 
-    // Track video open event
+    // 🔁 เช็คถ้า video มาจาก .short-video section ให้เพิ่ม class "portrait-video"
+    if (modalContent) {
+      const isPortrait = element.closest(".short-video")
+      if (isPortrait) {
+        modalContent.classList.add("portrait-video")
+      } else {
+        modalContent.classList.remove("portrait-video")
+      }
+    }
+
+    // ✅ Track event (เดิม)
     const trackEvent = window.trackEvent || (() => {})
     trackEvent("video_open", "Video", `Video ID: ${videoId}`, 1)
   }
 }
 
+// Close Video Modal Function //
 function closeVideoModal() {
   const modal = document.getElementById("videoModal")
   const iframe = document.getElementById("videoFrame")
+  const modalContent = document.querySelector(".video-modal-content")
 
   if (modal && iframe) {
     modal.classList.remove("active")
     iframe.src = ""
     document.body.style.overflow = "auto"
 
-    // Track video close event
+    // ✅ ลบ class portrait-video เมื่อปิด
+    if (modalContent) {
+      modalContent.classList.remove("portrait-video")
+    }
+
+    // Track event (เดิม)
     const trackEvent = window.trackEvent || (() => {})
     trackEvent("video_close", "Video", "Modal Closed", 1)
   }

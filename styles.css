@@ -2280,3 +2280,23 @@ nav {
     color: inherit; /* Inherit color from .video-info */
   }
 }
+
+/* Portrait video style for Reels */
+.video-modal-content.portrait-video {
+  aspect-ratio: 9 / 16;
+  max-width: 400px;
+}
+
+/* fade animation */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px); /* เลื่อนขึ้นนิดๆ */
+  transition: all 0.8s ease-out; /* ลื่นขึ้น */
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
